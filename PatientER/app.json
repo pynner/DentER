@@ -4,7 +4,7 @@
     "slug": "React-Native-Seed",
     "loading": {
       "hideExponentText": false,
-      "icon": "./assets/loading.png"
+      "icon": "./assets/img/loading.png"
     },
     "orientation": "portrait",
     "primaryColor": "#cccccc",

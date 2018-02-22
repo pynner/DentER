@@ -1,6 +1,16 @@
 // @flow
 import * as React from "react";
-import { Item, Input, Icon, Form, Toast } from "native-base";
+import {
+  Item,
+  Input,
+  Icon,
+  Form,
+  Toast,
+  Text,
+  Body,
+  ListItem,
+  CheckBox
+} from "native-base";
 import { observer, inject } from "mobx-react/native";
 
 import Login from "../../stories/screens/Login";
@@ -14,8 +24,7 @@ export interface State {}
 @inject("loginForm")
 @observer
 export default class LoginContainer extends React.Component<Props, State> {
-  emailInput: any;
-  pwdinput: any;
+  phoneInput: any;
   login() {
     this.props.loginForm.validateForm();
     if (this.props.loginForm.isValid) {
@@ -23,10 +32,11 @@ export default class LoginContainer extends React.Component<Props, State> {
       this.props.navigation.navigate("Drawer");
     } else {
       Toast.show({
-        text: "Enter Valid Email & password!",
-        duration: 2000,
+        text: "Must enter a valid phone number and accept the terms of use",
+        duration: 5000,
         position: "top",
-        textStyle: { textAlign: "center" }
+        textStyle: { textAlign: "center" },
+        type: "warning"
       });
     }
   }
@@ -34,28 +44,35 @@ export default class LoginContainer extends React.Component<Props, State> {
     const form = this.props.loginForm;
     const Fields = (
       <Form>
-        <Item error={form.emailError ? true : false}>
-          <Icon active name="person" />
+        <Item error={form.phoneError ? true : false}>
+          <Icon active name="ios-phone-portrait" />
+          <Text> +1 </Text>
           <Input
-            placeholder="Email"
+            style={{ paddingLeft: 0 }}
+            placeholder="Enter Your Mobile Phone Number"
+            maxLength={10}
             keyboardType="numeric"
-            ref={c => (this.emailInput = c)}
-            value={form.email}
-            onBlur={() => form.validateEmail()}
-            onChangeText={e => form.emailOnChange(e)}
+            ref={c => (this.phoneInput = c)}
+            value={form.phone}
+            onBlur={() => form.validatePhone()}
+            onChangeText={e => form.phoneOnChange(e)}
           />
         </Item>
-        <Item error={form.passwordError ? true : false}>
-          <Icon active name="unlock" />
-          <Input
-            placeholder="Password"
-            ref={c => (this.pwdinput = c)}
-            value={form.password}
-            onBlur={() => form.validatePassword()}
-            onChangeText={e => form.passwordOnChange(e)}
-            secureTextEntry={true}
+        <ListItem>
+          <CheckBox
+            checked={form.termsCheck}
+            onPress={() => form.termPressed()}
           />
-        </Item>
+          <Body>
+            <Text>
+              I agree to the{" "}
+              {/* @TODO Add button to actually open a terms of use somewhere */}
+              <Text style={{ color: "blue", textDecorationLine: "underline" }}>
+                Term(s) of Use
+              </Text>
+            </Text>
+          </Body>
+        </ListItem>
       </Form>
     );
     return <Login loginForm={Fields} onLogin={() => this.login()} />;

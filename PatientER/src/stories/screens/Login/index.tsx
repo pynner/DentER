@@ -1,5 +1,5 @@
 import * as React from "react";
-import Images from "@assets/images";
+import Images from "../../../../assets/images.js";
 import { Image, Platform } from "react-native";
 import {
   Container,
@@ -10,7 +10,6 @@ import {
   Button,
   Text,
   View,
-  Icon,
   Footer
 } from "native-base";
 //import styles from "./styles";
@@ -25,7 +24,10 @@ class Login extends React.Component<Props, State> {
       <Container>
         <Header style={{ height: 200 }}>
           <Body style={{ alignItems: "center" }}>
-            <Icon name="ios-help-buoy" style={{ fontSize: 104 }} />
+            <Image
+              source={Images.logo}
+              style={{ width: 130, height: 130, marginTop: 30 }}
+            />
             <Title>DentER - Patient</Title>
             <View padder>
               <Text
@@ -36,7 +38,7 @@ class Login extends React.Component<Props, State> {
         </Header>
         <Content>
           {this.props.loginForm}
-          <View padder>
+          <View padder style={{ marginTop: 20 }}>
             <Button block onPress={() => this.props.onLogin()}>
               <Text>Login</Text>
             </Button>
