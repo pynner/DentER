@@ -1,5 +1,5 @@
 import * as React from "react";
-import Images from "@assets/images";
+import Images from "../../../../assets/images.js";
 import { Image, Platform } from "react-native";
 import {
   Container,
