@@ -16,8 +16,6 @@ _Brought to you by WebHealth LakeheadU_
 
 CD to either the patient or dentist directory
 
-Run the following commands to run the app in Expo
-
 ```sh
 $ npm install
   or
