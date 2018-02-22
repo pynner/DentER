@@ -1,23 +1,22 @@
 import { observable, action } from "mobx";
 
 class TwoFactor {
-  @observable isValid = false;
   @observable code = "";
+  @observable isValid = false;
 
   @action
-  phoneOnChange(val) {
+  codeOnChange(val) {
     this.code = val;
-    // Run code validation once code length is 4 numbers
-    if (this.code.length === 4) {
-      this.validateCode();
-    }
+    this.validateCode();
   }
 
-  // @TODO check 2AUTH code via AWS
   @action
   validateCode() {
+    // @TODO check 2AUTH code via AWS
     if (this.code.length === 4) {
       this.isValid = true;
+    } else {
+      this.isValid = false;
     }
   }
 
