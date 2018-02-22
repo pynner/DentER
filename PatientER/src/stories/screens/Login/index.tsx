@@ -1,4 +1,5 @@
 import * as React from "react";
+import Images from "@assets/images";
 import { Image, Platform } from "react-native";
 import {
   Container,
@@ -24,8 +25,8 @@ class Login extends React.Component<Props, State> {
       <Container>
         <Header style={{ height: 200 }}>
           <Body style={{ alignItems: "center" }}>
-            <Icon name="heart" style={{ fontSize: 104 }} />
-            <Title>Lauren Chizzer is a cutie</Title>
+            <Icon name="ios-help-buoy" style={{ fontSize: 104 }} />
+            <Title>DentER - Patient</Title>
             <View padder>
               <Text
                 style={{ color: Platform.OS === "ios" ? "#000" : "#FFF" }}
@@ -49,7 +50,7 @@ class Login extends React.Component<Props, State> {
               <Text style={{ color: "#000" }}>Made by: </Text>
             </View>
             <Image
-              source={require("../../../../assets/periodic.png")}
+              source={Images.periodic}
               style={{ width: 422 / 4, height: 86 / 4 }}
             />
           </View>
