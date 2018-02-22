@@ -29,7 +29,7 @@ export default class LoginContainer extends React.Component<Props, State> {
     this.props.loginForm.validateForm();
     if (this.props.loginForm.isValid) {
       this.props.loginForm.clearStore();
-      this.props.navigation.navigate("Drawer");
+      this.props.navigation.navigate("TwoFactor");
     } else {
       Toast.show({
         text: "Must enter a valid phone number and accept the terms of use",
