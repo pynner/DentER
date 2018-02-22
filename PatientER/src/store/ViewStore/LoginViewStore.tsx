@@ -3,6 +3,9 @@ import { observable, action } from "mobx";
 class LoginStore {
   @observable phone = "";
   @observable phoneError = "";
+
+  @observable termsCheck = false;
+
   @observable isValid = false;
 
   @action
@@ -20,9 +23,15 @@ class LoginStore {
         ? undefined
         : "Invalid phone number";
   }
+
+  @action
+  termPressed() {
+    this.termsCheck = !this.termsCheck;
+  }
+
   @action
   validateForm() {
-    if (this.phoneError === undefined) {
+    if (this.phoneError === undefined && this.termsCheck === true) {
       this.isValid = true;
     }
   }
@@ -31,6 +40,7 @@ class LoginStore {
   clearStore() {
     this.phone = "";
     this.phoneError = "";
+    this.termsCheck = false;
     this.isValid = false;
   }
 }

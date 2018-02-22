@@ -1,6 +1,16 @@
 // @flow
 import * as React from "react";
-import { Item, Input, Icon, Form, Toast, Text } from "native-base";
+import {
+  Item,
+  Input,
+  Icon,
+  Form,
+  Toast,
+  Text,
+  Body,
+  ListItem,
+  CheckBox
+} from "native-base";
 import { observer, inject } from "mobx-react/native";
 
 import Login from "../../stories/screens/Login";
@@ -22,10 +32,11 @@ export default class LoginContainer extends React.Component<Props, State> {
       this.props.navigation.navigate("Drawer");
     } else {
       Toast.show({
-        text: "Enter a valid phone number",
-        duration: 2000,
+        text: "Must enter a valid phone number and accept the terms of use",
+        duration: 5000,
         position: "top",
-        textStyle: { textAlign: "center" }
+        textStyle: { textAlign: "center" },
+        type: "warning"
       });
     }
   }
@@ -38,7 +49,7 @@ export default class LoginContainer extends React.Component<Props, State> {
           <Text> +1 </Text>
           <Input
             style={{ paddingLeft: 0 }}
-            placeholder="Mobile number"
+            placeholder="Enter Your Mobile Phone Number"
             maxLength={10}
             keyboardType="numeric"
             ref={c => (this.phoneInput = c)}
@@ -47,6 +58,21 @@ export default class LoginContainer extends React.Component<Props, State> {
             onChangeText={e => form.phoneOnChange(e)}
           />
         </Item>
+        <ListItem>
+          <CheckBox
+            checked={form.termsCheck}
+            onPress={() => form.termPressed()}
+          />
+          <Body>
+            <Text>
+              I agree to the{" "}
+              {/* @TODO Add button to actually open a terms of use somewhere */}
+              <Text style={{ color: "blue", textDecorationLine: "underline" }}>
+                Term(s) of Use
+              </Text>
+            </Text>
+          </Body>
+        </ListItem>
       </Form>
     );
     return <Login loginForm={Fields} onLogin={() => this.login()} />;
