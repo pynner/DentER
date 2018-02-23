@@ -4,11 +4,20 @@ import { Item, Input, Form, Toast } from "native-base";
 import { observer, inject } from "mobx-react/native";
 
 import TwoFactor from "../../stories/screens/TwoFactor";
+import { NavigationActions } from "react-navigation";
+
+import { Keyboard } from "react-native";
 
 export interface Props {
   navigation: any;
   twoFactor: any;
 }
+
+const resetAction = NavigationActions.reset({
+  index: 0,
+  actions: [NavigationActions.navigate({ routeName: "Drawer" })]
+});
+
 export interface State {}
 
 @inject("twoFactor")
@@ -19,8 +28,8 @@ export default class TwoFactorContainer extends React.Component<Props, State> {
     this.props.twoFactor.validateCode();
     if (this.props.twoFactor.isValid) {
       this.props.twoFactor.clearStore();
-      // @TODO Change to reset action so cannot navigate back to code after success
-      this.props.navigation.navigate("Drawer");
+      Keyboard.dismiss();
+      this.props.navigation.dispatch(resetAction);
     } else {
       Toast.show({
         text: "Your code is not valid, please try again",
@@ -39,6 +48,7 @@ export default class TwoFactorContainer extends React.Component<Props, State> {
         <Item error={form.isValid ? false : true}>
           <Input
             style={{ textAlign: "center", marginRight: 20 }}
+            autoFocus={true}
             placeholder="Input Activation Code"
             maxLength={4}
             keyboardType="numeric"

@@ -50,6 +50,7 @@ export default class LoginContainer extends React.Component<Props, State> {
           <Input
             style={{ paddingLeft: 0 }}
             placeholder="Enter Your Mobile Phone Number"
+            autoFocus={true}
             maxLength={10}
             keyboardType="numeric"
             ref={c => (this.phoneInput = c)}
