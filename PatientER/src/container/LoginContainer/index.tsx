@@ -1,5 +1,6 @@
 // @flow
 import * as React from "react";
+import { Linking } from "react-native";
 import {
   Item,
   Input,
@@ -68,7 +69,10 @@ export default class LoginContainer extends React.Component<Props, State> {
             <Text>
               I agree to the{" "}
               {/* @TODO Add button to actually open a terms of use somewhere */}
-              <Text style={{ color: "blue", textDecorationLine: "underline" }}>
+              <Text
+                style={{ color: "blue", textDecorationLine: "underline" }}
+                onPress={() => Linking.openURL("http://google.com")}
+              >
                 Term(s) of Use
               </Text>
             </Text>
