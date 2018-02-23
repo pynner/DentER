@@ -20,7 +20,7 @@ export interface Props {
 }
 const resetAction = NavigationActions.reset({
   index: 0,
-  actions: [NavigationActions.navigate({ routeName: "Home" })]
+  actions: [NavigationActions.navigate({ routeName: "Drawer" })]
 });
 export interface State {}
 class BlankPage extends React.Component<Props, State> {
@@ -57,21 +57,32 @@ class BlankPage extends React.Component<Props, State> {
           style={{
             flexDirection: "row",
             flex: 1,
+            backgroundColor: "#666666",
             position: "absolute",
-            bottom: 50,
+            bottom: 0,
             left: 0,
             right: 0,
             justifyContent: "space-between",
-            padding: 15
+            padding: 5
           }}
         >
-          <Button iconLeft onPress={() => this.props.navigation.goBack()}>
-            <Icon name="arrow-back" />
-            <Text>Previous</Text>
+          <Button transparent onPress={() => this.props.navigation.goBack()}>
+            <Icon
+              name="arrow-back"
+              style={{ color: "white", marginRight: 10, fontSize: 45 }}
+            />
+            <Text style={{ color: "white", paddingLeft: 0, fontSize: 20 }}>
+              Previous
+            </Text>
           </Button>
-          <Button iconRight onPress={() => this.props.navigation.navigate()}>
-            <Icon name="arrow-forward" />
-            <Text>Next</Text>
+          <Button transparent onPress={() => this.props.navigation.navigate()}>
+            <Text style={{ color: "white", paddingRight: 0, fontSize: 20 }}>
+              Next
+            </Text>
+            <Icon
+              name="arrow-forward"
+              style={{ color: "white", marginLeft: 10, fontSize: 45 }}
+            />
           </Button>
         </View>
       </Container>
