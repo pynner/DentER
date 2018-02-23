@@ -60,7 +60,7 @@ export default class LoginContainer extends React.Component<Props, State> {
             onChangeText={e => form.phoneOnChange(e)}
           />
         </Item>
-        <ListItem>
+        <ListItem onPress={() => form.termPressed()}>
           <CheckBox
             checked={form.termsCheck}
             onPress={() => form.termPressed()}
