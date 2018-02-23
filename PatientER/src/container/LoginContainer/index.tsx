@@ -1,5 +1,6 @@
 // @flow
 import * as React from "react";
+import { Linking } from "react-native";
 import {
   Item,
   Input,
@@ -29,7 +30,7 @@ export default class LoginContainer extends React.Component<Props, State> {
     this.props.loginForm.validateForm();
     if (this.props.loginForm.isValid) {
       this.props.loginForm.clearStore();
-      this.props.navigation.navigate("Drawer");
+      this.props.navigation.navigate("TwoFactor");
     } else {
       Toast.show({
         text: "Must enter a valid phone number and accept the terms of use",
@@ -50,6 +51,7 @@ export default class LoginContainer extends React.Component<Props, State> {
           <Input
             style={{ paddingLeft: 0 }}
             placeholder="Enter Your Mobile Phone Number"
+            autoFocus={true}
             maxLength={10}
             keyboardType="numeric"
             ref={c => (this.phoneInput = c)}
@@ -67,7 +69,10 @@ export default class LoginContainer extends React.Component<Props, State> {
             <Text>
               I agree to the{" "}
               {/* @TODO Add button to actually open a terms of use somewhere */}
-              <Text style={{ color: "blue", textDecorationLine: "underline" }}>
+              <Text
+                style={{ color: "blue", textDecorationLine: "underline" }}
+                onPress={() => Linking.openURL("http://google.com")}
+              >
                 Term(s) of Use
               </Text>
             </Text>
