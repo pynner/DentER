@@ -46,7 +46,6 @@ class BlankPage extends React.Component<Props, State> {
         </Header>
 
         <Content padder>
-          <Text> Tesxt Textxxx </Text>
           {this.props.surveyQuestions}
           {/* View to add padding so can scroll to bottom item */}
           <View style={{ marginBottom: 100 }} />
