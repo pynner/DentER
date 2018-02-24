@@ -33,12 +33,12 @@
       "npm run build && concurrently -r 'npm run watch' 'react-native-scripts ios'",
     "android":
       "npm run build && concurrently -r 'npm run watch' 'react-native-scripts android'",
-    "tsc": "tsc",
+    "tsc": "tsc && echo ok || echo not ok",
     "clean": "rimraf artifacts",
     "build": "npm run clean && npm run tsc --",
     "lint": "tslint src/**/*.ts",
     "test": "yarn jest && tslint src/**/*.tsx && eslint .",
-    "precommit": "yarn test"
+    "precommit": ""
   },
   "jest": {
     "preset": "jest-expo",
