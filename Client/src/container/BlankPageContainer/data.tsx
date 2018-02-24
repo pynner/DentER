@@ -19,7 +19,7 @@ export default [
   },
   {
     question: 4,
-    title: "What is the main trigger of pain?",
+    title: "Any additional comments?",
     options: [],
     selectionType: "textInput"
   }

@@ -63,7 +63,7 @@ export default class LoginContainer extends React.Component<Props, State> {
         <ListItem onPress={() => form.termPressed()}>
           <CheckBox
             checked={form.termsCheck}
-            // onPress={() => form.termPressed()}
+            onPress={() => form.termPressed()}
           />
           <Body>
             <Text>
