@@ -14,6 +14,12 @@ const styles: any = StyleSheet.create({
     right: 0,
     justifyContent: "space-between",
     padding: 5
+  },
+  horizontalLine: {
+    borderBottomColor: "black",
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    marginBottom: 10,
+    marginTop: 10
   }
 });
 export default styles;

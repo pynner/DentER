@@ -1,15 +1,16 @@
 import { observable, action } from "mobx";
 
-class HomeStore {
+class SurveyStore {
   @observable hasErrored = false;
   @observable isLoading = true;
-  @observable items = [];
+  @observable questions = [];
+  @observable surveyChoice = [""];
 
   @action
   fetchItems(data) {
-    this.items = data;
+    this.questions = data;
     this.isLoading = false;
   }
 }
 
-export default HomeStore;
+export default SurveyStore;

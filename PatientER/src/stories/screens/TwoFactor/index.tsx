@@ -1,6 +1,6 @@
 import * as React from "react";
 import Images from "../../../../assets/images.js";
-import { Image, Platform, StyleSheet } from "react-native";
+import { Image, StyleSheet } from "react-native";
 import {
   Container,
   Content,

@@ -30,7 +30,7 @@ const App = StackNavigator(
     TwoFactor: { screen: TwoFactor }
   },
   {
-    initialRouteName: "Login",
+    initialRouteName: "Drawer",
     headerMode: "none"
   }
 );

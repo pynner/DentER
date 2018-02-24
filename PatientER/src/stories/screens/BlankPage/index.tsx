@@ -14,15 +14,14 @@ import {
   H3,
   ListItem,
   CheckBox,
-  List,
-  Radio
+  List
 } from "native-base";
 import { NavigationActions } from "react-navigation";
-import { ActivityIndicator, StyleSheet } from "react-native";
 
 import styles from "./styles";
 export interface Props {
   navigation: any;
+  questions: any;
 }
 const resetAction = NavigationActions.reset({
   index: 0,
@@ -32,7 +31,6 @@ export interface State {}
 class BlankPage extends React.Component<Props, State> {
   render() {
     const param = this.props.navigation.state.params;
-    var opt1Checked = true;
     return (
       <Container style={styles.container}>
         <Header>
@@ -53,57 +51,32 @@ class BlankPage extends React.Component<Props, State> {
         </Header>
 
         <Content padder>
-          <View style={{ marginBottom: 10 }}>
-            <H3 style={{ fontWeight: "bold" }}>
-              {""}
-              Overall, how satisfied are you with your experience?
-            </H3>
-          </View>
-          <View style={{ backgroundColor: "white" }}>
-            <List>
-              <ListItem style={{ marginRight: 15 }}>
-                <CheckBox checked={true} />
-                <Body>
-                  <Text>Option 1Option 1Option 1Option </Text>
-                </Body>
-              </ListItem>
-              <ListItem
-                style={{ marginRight: 15 }}
-                onPress={() => (opt1Checked = !opt1Checked)}
-              >
-                <CheckBox checked={opt1Checked} />
-                <Body>
-                  <Text>Option 2</Text>
-                </Body>
-              </ListItem>
-              <ListItem style={{ marginRight: 15 }}>
-                <CheckBox checked={false} />
-                <Body>
-                  <Text>Option 3</Text>
-                </Body>
-              </ListItem>
-              <ListItem style={{ marginRight: 15 }}>
-                <CheckBox checked={false} />
-                <Body>
-                  <Text>Option 4</Text>
-                </Body>
-              </ListItem>
-            </List>
-          </View>
-          <View
-            style={{
-              borderBottomColor: "black",
-              borderBottomWidth: StyleSheet.hairlineWidth,
-              marginBottom: 10,
-              marginTop: 10
-            }}
-          />
-          {/* View to add padding so can see bottom item */}
-          <View
-            style={{
-              marginBottom: 100
-            }}
-          />
+          {this.props.questions.map((question, i) => (
+            <View key={i}>
+              {/* Question title */}
+              <View style={{ marginBottom: 10 }}>
+                <H3 style={{ fontWeight: "bold" }}>{question.title} </H3>
+              </View>
+              {/* Question body */}
+              <View style={{ backgroundColor: "white" }}>
+                <List>
+                  {question.options.map((option, i) => (
+                    <ListItem key={i} style={{ marginRight: 15 }}>
+                      <CheckBox checked={false} />
+                      <Body>
+                        <Text>{option}</Text>
+                      </Body>
+                    </ListItem>
+                  ))}
+                </List>
+              </View>
+
+              <View style={styles.horizontalLine} />
+            </View> //End wrapper
+          ))}
+
+          {/* View to add padding so can scroll to bottom item */}
+          <View style={{ marginBottom: 100 }} />
         </Content>
 
         {/* Survey Navigation */}

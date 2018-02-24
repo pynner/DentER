@@ -28,7 +28,7 @@ class Login extends React.Component<Props, State> {
               source={Images.logo}
               style={{ width: 130, height: 130, marginTop: 30 }}
             />
-            <Title>DentER - Patient</Title>
+            <Title>DentER</Title>
             <View padder>
               <Text
                 style={{ color: Platform.OS === "ios" ? "#000" : "#FFF" }}
