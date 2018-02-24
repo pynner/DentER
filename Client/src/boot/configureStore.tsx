@@ -1,3 +1,4 @@
+/* tslint:disable */
 import MainStore from "../store/DomainStore/HomeStore";
 import LoginStore from "../store/ViewStore/LoginViewStore";
 import TwoFactor from "../store/TwoFactorStore/TwoFactorStore";

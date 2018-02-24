@@ -39,7 +39,7 @@ class BlankPage extends React.Component<Props, State> {
           </Left>
 
           <Body style={{ flex: 3 }}>
-            <Title>FUCKING YEA BITCH</Title>
+            <Title>New Submission Request</Title>
           </Body>
 
           <Right />
