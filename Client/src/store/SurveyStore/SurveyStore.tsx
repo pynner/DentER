@@ -31,6 +31,12 @@ class SurveyStore {
   q3OnChange(val) {
     this.surveyChoice[3] = val;
   }
+
+  @action
+  clearStore() {
+    this.hasErrored = false;
+    this.surveyChoice = [-1, -1, [false, false, false], ""];
+  }
 }
 
 export default SurveyStore;

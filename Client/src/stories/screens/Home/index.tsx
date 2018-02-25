@@ -47,7 +47,8 @@ class Home extends React.Component<Props, State> {
                 onPress={() =>
                   this.props.navigation.navigate("BlankPage", {
                     name: { item }
-                  })}
+                  })
+                }
               >
                 <Text>{item}</Text>
               </ListItem>

@@ -29,6 +29,11 @@ export interface State {}
 @observer
 export default class BlankPageContainer extends React.Component<Props, State> {
   addInfo: any;
+
+  resetForm() {
+    this.props.surveyStore.clearStore();
+  }
+
   componentWillMount() {
     this.props.surveyStore.fetchItems(data);
   }
@@ -139,7 +144,11 @@ export default class BlankPageContainer extends React.Component<Props, State> {
       </View>
     );
     return (
-      <BlankPage navigation={this.props.navigation} surveyQuestions={Fields} />
+      <BlankPage
+        navigation={this.props.navigation}
+        surveyQuestions={Fields}
+        reset={() => this.resetForm()}
+      />
     );
   }
 }

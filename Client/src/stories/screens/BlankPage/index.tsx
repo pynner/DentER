@@ -18,6 +18,7 @@ import styles from "./styles";
 export interface Props {
   navigation: any;
   surveyQuestions: any;
+  reset: Function;
 }
 const resetAction = NavigationActions.reset({
   index: 0,
@@ -42,7 +43,11 @@ class BlankPage extends React.Component<Props, State> {
             <Title>New Submission Request</Title>
           </Body>
 
-          <Right />
+          <Right>
+            <Button transparent onPress={() => this.props.reset()}>
+              <Icon name="ios-refresh" />
+            </Button>
+          </Right>
         </Header>
 
         <Content padder>
