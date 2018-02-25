@@ -27,7 +27,7 @@ class Login extends React.Component<Props, State> {
               source={require("../../../../assets/DentER_logo.png")}
               style={{ width: 130, height: 130, marginTop: 30 }}
             />
-            <Title>DentER</Title>
+            <Title>DentERRR</Title>
             <View padder>
               <Text
                 style={{ color: Platform.OS === "ios" ? "#000" : "#FFF" }}
