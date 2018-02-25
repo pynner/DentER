@@ -32,7 +32,7 @@ export default class TwoFactorContainer extends React.Component<Props, State> {
       this.props.navigation.dispatch(resetAction);
     } else {
       Toast.show({
-        text: "Your code is not valid, please try again",
+        text: "Your code is not valid, please try again.",
         duration: 3000,
         position: "top",
         textStyle: { textAlign: "center" },

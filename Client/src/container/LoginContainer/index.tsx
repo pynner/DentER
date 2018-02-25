@@ -33,7 +33,7 @@ export default class LoginContainer extends React.Component<Props, State> {
       this.props.navigation.navigate("TwoFactor");
     } else {
       Toast.show({
-        text: "Must enter a valid phone number and accept the terms of use",
+        text: "Your phone number must be valid, and you must accept the terms of service.",
         duration: 5000,
         position: "top",
         textStyle: { textAlign: "center" },
@@ -50,7 +50,7 @@ export default class LoginContainer extends React.Component<Props, State> {
           <Text> +1 </Text>
           <Input
             style={{ paddingLeft: 0 }}
-            placeholder="Enter Your Mobile Phone Number"
+            placeholder="Enter your phone number"
             autoFocus={true}
             maxLength={10}
             keyboardType="numeric"

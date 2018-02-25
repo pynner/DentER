@@ -21,7 +21,7 @@ class LoginStore {
       ? required
       : this.phone.match(/\d/g).length === 10
         ? undefined
-        : "Invalid phone number";
+        : "Invalid phone number!";
   }
 
   @action
