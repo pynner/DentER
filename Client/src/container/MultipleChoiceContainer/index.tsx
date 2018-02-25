@@ -1,19 +1,7 @@
 import * as React from "react";
 import { observer, inject } from "mobx-react/native";
 
-import {
-  Text,
-  Body,
-  View,
-  H3,
-  ListItem,
-  CheckBox,
-  List,
-  Item,
-  Input
-} from "native-base";
-
-import { Keyboard } from "react-native";
+import { Text, Body, View, H3, ListItem, CheckBox, List } from "native-base";
 
 import styles from "./styles";
 import MultipleChoice from "../../stories/screens/MultipleChoice";
@@ -34,7 +22,7 @@ export default class MultipleChoiceContainer extends React.Component<
   addInfo: any;
 
   resetForm() {
-    this.props.surveyStore.clearStore();
+    this.props.surveyStore.clearMultipleChoice();
   }
 
   componentWillMount() {
@@ -58,7 +46,7 @@ export default class MultipleChoiceContainer extends React.Component<
                 onPress={() => survey.q0Touch(i)}
               >
                 <CheckBox
-                  checked={survey.surveyChoice[0] === i}
+                  checked={survey.multipleChoiceAnswers[0] === i}
                   onPress={() => survey.q0Touch(i)}
                 />
                 <Body>
@@ -83,7 +71,7 @@ export default class MultipleChoiceContainer extends React.Component<
                 onPress={() => survey.q1Touch(i)}
               >
                 <CheckBox
-                  checked={survey.surveyChoice[1] === i}
+                  checked={survey.multipleChoiceAnswers[1] === i}
                   onPress={() => survey.q1Touch(i)}
                 />
                 <Body>
@@ -108,7 +96,7 @@ export default class MultipleChoiceContainer extends React.Component<
                 onPress={() => survey.q2Touch(i)}
               >
                 <CheckBox
-                  checked={survey.surveyChoice[2][i]}
+                  checked={survey.multipleChoiceAnswers[2][i]}
                   onPress={() => survey.q2Touch(i)}
                 />
                 <Body>
@@ -120,7 +108,7 @@ export default class MultipleChoiceContainer extends React.Component<
         </View>
         <View style={styles.horizontalLine} />
 
-        {/* Question 4 */}
+        {/* Question 4
         <View style={{ marginBottom: 10 }}>
           <H3 style={{ fontWeight: "bold" }}>{survey.questions[3].title} </H3>
         </View>
@@ -143,7 +131,7 @@ export default class MultipleChoiceContainer extends React.Component<
             </ListItem>
           </List>
         </View>
-        <View style={styles.horizontalLine} />
+        <View style={styles.horizontalLine} /> */}
       </View>
     );
     return (
