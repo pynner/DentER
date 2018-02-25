@@ -16,7 +16,7 @@ import {
 import { Keyboard } from "react-native";
 
 import styles from "./styles";
-import BlankPage from "../../stories/screens/BlankPage";
+import MultipleChoice from "../../stories/screens/MultipleChoice";
 import data from "./data";
 
 export interface Props {
@@ -27,7 +27,10 @@ export interface State {}
 
 @inject("surveyStore")
 @observer
-export default class BlankPageContainer extends React.Component<Props, State> {
+export default class MultipleChoiceContainer extends React.Component<
+  Props,
+  State
+> {
   addInfo: any;
 
   resetForm() {
@@ -144,7 +147,7 @@ export default class BlankPageContainer extends React.Component<Props, State> {
       </View>
     );
     return (
-      <BlankPage
+      <MultipleChoice
         navigation={this.props.navigation}
         surveyQuestions={Fields}
         reset={() => this.resetForm()}

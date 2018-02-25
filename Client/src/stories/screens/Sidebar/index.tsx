@@ -18,7 +18,7 @@ const routes = [
     caption: "Home"
   },
   {
-    route: "BlankPage",
+    route: "MultipleChoice",
     caption: "New Request"
   },
   {
