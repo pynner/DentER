@@ -5,6 +5,7 @@ class SurveyStore {
   @observable isLoading = true;
   @observable questions = [];
   @observable multipleChoiceAnswers = [-1, -1, [false, false, false]];
+  @observable additionalInfo = [""];
 
   @action
   fetchItems(data) {
@@ -28,13 +29,18 @@ class SurveyStore {
   }
 
   @action
-  q3OnChange(val) {
-    this.multipleChoiceAnswers[3] = val;
+  additionalOnChange(val) {
+    this.additionalInfo[0] = val;
   }
 
   @action
   clearMultipleChoice() {
     this.multipleChoiceAnswers = [-1, -1, [false, false, false]];
+  }
+
+  @action
+  clearAdditional() {
+    this.additionalInfo = [""];
   }
 }
 

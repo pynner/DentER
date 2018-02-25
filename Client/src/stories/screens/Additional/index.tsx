@@ -25,7 +25,7 @@ const resetAction = NavigationActions.reset({
   actions: [NavigationActions.navigate({ routeName: "Drawer" })]
 });
 export interface State {}
-class MultipleChoice extends React.Component<Props, State> {
+class Additional extends React.Component<Props, State> {
   render() {
     return (
       <Container style={styles.container}>
@@ -58,19 +58,16 @@ class MultipleChoice extends React.Component<Props, State> {
 
         {/* Survey Navigation */}
         <View style={styles.navigation}>
-          <Button transparent>
-            {/* <Icon
+          <Button transparent onPress={() => this.props.navigation.goBack()}>
+            <Icon
               name="arrow-back"
               style={{ color: "white", marginRight: 10, fontSize: 45 }}
             />
             <Text style={{ color: "white", paddingLeft: 0, fontSize: 20 }}>
               Previous
-            </Text> */}
+            </Text>
           </Button>
-          <Button
-            transparent
-            onPress={() => this.props.navigation.navigate("Additional")}
-          >
+          <Button transparent onPress={() => this.props.navigation.navigate()}>
             <Text style={{ color: "white", paddingRight: 0, fontSize: 20 }}>
               Next
             </Text>
@@ -85,4 +82,4 @@ class MultipleChoice extends React.Component<Props, State> {
   }
 }
 
-export default MultipleChoice;
+export default Additional;
