@@ -14,7 +14,7 @@ _Brought to you by WebHealth LakeheadU_
 
 ### 2. Installation
 
-CD to either the patient or dentist directory
+CD to the client folder
 
 ```sh
 $ npm install
@@ -24,16 +24,18 @@ $ npm install
 
 ### Run on iOS
 
-* Opt #1:
-  _ Run `npm start` in your terminal
-  _ Scan the QR code in your Expo app
-  * Opt #2:
-    * Run `npm run ios` in your terminal
+Open the .xcodeproj file, and set dev team.
+
+Run the following commands, start will start the dev server while watch will allow for live reloading.
+
+```
+$ npm start
+$ npm watch
+```
 
 ### Run on Android
 
-* Opt #1:
-  _ Run `npm start` in your terminal
-  _ Scan the QR code in your Expo app
-  * Opt #2:
-    * Run `npm run android` in your terminal
+```
+$ npm start
+$ npm watch
+```
