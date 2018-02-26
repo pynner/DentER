@@ -10,14 +10,13 @@ import {
   Left,
   Body,
   Right,
-  List,
-  ListItem
+  H1,
+  H3
 } from "native-base";
 
 import styles from "./styles";
 export interface Props {
   navigation: any;
-  list: any;
 }
 export interface State {}
 class Home extends React.Component<Props, State> {
@@ -40,20 +39,8 @@ class Home extends React.Component<Props, State> {
           <Right />
         </Header>
         <Content>
-          <List>
-            {this.props.list.map((item, i) => (
-              <ListItem
-                key={i}
-                onPress={() =>
-                  this.props.navigation.navigate("MultipleChoice", {
-                    name: { item }
-                  })
-                }
-              >
-                <Text>{item}</Text>
-              </ListItem>
-            ))}
-          </List>
+          <H1> Welcome to DentER! </H1>
+          <H3> The best way to conect with dentists on-call </H3>
         </Content>
       </Container>
     );

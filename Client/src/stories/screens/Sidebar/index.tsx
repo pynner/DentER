@@ -40,24 +40,25 @@ export default class Sidebar extends React.Component<Props, State> {
     return (
       <Container>
         <Content>
-          <List
-            style={{ marginTop: 40 }}
-            dataArray={routes}
-            renderRow={data => {
-              return (
-                <ListItem
-                  button
-                  onPress={() => {
-                    data.route === "Login"
-                      ? this.props.navigation.dispatch(resetAction)
-                      : this.props.navigation.navigate(data.route);
-                  }}
-                >
-                  <Text>{data.caption}</Text>
-                </ListItem>
-              );
-            }}
-          />
+          <List style={{ marginTop: 40 }}>
+            <ListItem
+              button
+              onPress={() => {
+                this.props.navigation.navigate(routes[0].route);
+              }}
+            >
+              <Text>{routes[0].caption}</Text>
+            </ListItem>
+
+            <ListItem
+              button
+              onPress={() => {
+                this.props.navigation.dispatch(resetAction);
+              }}
+            >
+              <Text>{routes[2].caption}</Text>
+            </ListItem>
+          </List>
         </Content>
 
         <Footer>

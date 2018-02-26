@@ -107,31 +107,6 @@ export default class MultipleChoiceContainer extends React.Component<
           </List>
         </View>
         <View style={styles.horizontalLine} />
-
-        {/* Question 4
-        <View style={{ marginBottom: 10 }}>
-          <H3 style={{ fontWeight: "bold" }}>{survey.questions[3].title} </H3>
-        </View>
-        <View style={{ backgroundColor: "white" }}>
-          <List>
-            <ListItem>
-              <Item regular>
-                <Input
-                  multiline={true}
-                  numberOfLines={4}
-                  placeholder="Enter Additional Information"
-                  returnKeyType={"done"}
-                  style={{ height: 150 }}
-                  onSubmitEditing={() => Keyboard.dismiss()}
-                  ref={c => (this.addInfo = c)}
-                  value={survey.surveyChoice[3]}
-                  onChangeText={e => survey.q3OnChange(e)}
-                />
-              </Item>
-            </ListItem>
-          </List>
-        </View>
-        <View style={styles.horizontalLine} /> */}
       </View>
     );
     return (

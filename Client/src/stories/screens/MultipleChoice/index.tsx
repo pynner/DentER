@@ -58,15 +58,7 @@ class MultipleChoice extends React.Component<Props, State> {
 
         {/* Survey Navigation */}
         <View style={styles.navigation}>
-          <Button transparent>
-            {/* <Icon
-              name="arrow-back"
-              style={{ color: "white", marginRight: 10, fontSize: 45 }}
-            />
-            <Text style={{ color: "white", paddingLeft: 0, fontSize: 20 }}>
-              Previous
-            </Text> */}
-          </Button>
+          <Button transparent />
           <Button
             transparent
             onPress={() => this.props.navigation.navigate("Additional")}
