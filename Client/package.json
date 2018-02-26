@@ -29,11 +29,11 @@
     "typescript": "2.6.2"
   },
   "scripts": {
-    "start": "react-native start",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
     "jest": "node node_modules/jest/bin/jest.js",
     "watch": "npm run build -- -w",
     "ios": "react-native run-ios",
-    "android": "react-native run-android",
+    "android": "node node_modules/react-native/local-cli/cli.js run-android",
     "tsc": "tsc",
     "clean": "rimraf artifacts",
     "build": "npm run clean && npm run tsc --",
