@@ -11,7 +11,6 @@ import {
   View,
   Footer
 } from "native-base";
-//import styles from "./styles";
 export interface Props {
   loginForm: any;
   onLogin: Function;

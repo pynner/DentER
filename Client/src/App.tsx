@@ -7,7 +7,8 @@ const deviceWidth = Dimensions.get("window").width;
 
 import Login from "./container/LoginContainer";
 import Home from "./container/HomeContainer";
-import BlankPage from "./container/BlankPageContainer";
+import MultipleChoice from "./container/MultipleChoiceContainer";
+import Additional from "./container/AdditionalContainer";
 import Sidebar from "./container/SidebarContainer";
 import TwoFactor from "./container/TwoFactorContainer";
 
@@ -25,7 +26,8 @@ const Drawer = DrawerNavigator(
 const App = StackNavigator(
   {
     Login: { screen: Login },
-    BlankPage: { screen: BlankPage },
+    MultipleChoice: { screen: MultipleChoice },
+    Additional: { screen: Additional },
     Drawer: { screen: Drawer },
     TwoFactor: { screen: TwoFactor }
   },

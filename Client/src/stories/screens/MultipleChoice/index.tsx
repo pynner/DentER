@@ -18,13 +18,14 @@ import styles from "./styles";
 export interface Props {
   navigation: any;
   surveyQuestions: any;
+  reset: Function;
 }
 const resetAction = NavigationActions.reset({
   index: 0,
   actions: [NavigationActions.navigate({ routeName: "Drawer" })]
 });
 export interface State {}
-class BlankPage extends React.Component<Props, State> {
+class MultipleChoice extends React.Component<Props, State> {
   render() {
     return (
       <Container style={styles.container}>
@@ -42,7 +43,11 @@ class BlankPage extends React.Component<Props, State> {
             <Title>New Submission Request</Title>
           </Body>
 
-          <Right />
+          <Right>
+            <Button transparent onPress={() => this.props.reset()}>
+              <Icon name="ios-refresh" />
+            </Button>
+          </Right>
         </Header>
 
         <Content padder>
@@ -53,16 +58,11 @@ class BlankPage extends React.Component<Props, State> {
 
         {/* Survey Navigation */}
         <View style={styles.navigation}>
-          <Button transparent onPress={() => this.props.navigation.goBack()}>
-            <Icon
-              name="arrow-back"
-              style={{ color: "white", marginRight: 10, fontSize: 45 }}
-            />
-            <Text style={{ color: "white", paddingLeft: 0, fontSize: 20 }}>
-              Previous
-            </Text>
-          </Button>
-          <Button transparent onPress={() => this.props.navigation.navigate()}>
+          <Button transparent />
+          <Button
+            transparent
+            onPress={() => this.props.navigation.navigate("Additional")}
+          >
             <Text style={{ color: "white", paddingRight: 0, fontSize: 20 }}>
               Next
             </Text>
@@ -77,4 +77,4 @@ class BlankPage extends React.Component<Props, State> {
   }
 }
 
-export default BlankPage;
+export default MultipleChoice;

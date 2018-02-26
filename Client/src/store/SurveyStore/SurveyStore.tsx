@@ -4,7 +4,8 @@ class SurveyStore {
   @observable hasErrored = false;
   @observable isLoading = true;
   @observable questions = [];
-  @observable surveyChoice = [-1, -1, [false, false, false], ""];
+  @observable multipleChoiceAnswers = [-1, -1, [false, false, false]];
+  @observable additionalInfo = [""];
 
   @action
   fetchItems(data) {
@@ -14,22 +15,32 @@ class SurveyStore {
 
   @action
   q0Touch(key) {
-    this.surveyChoice[0] = key;
+    this.multipleChoiceAnswers[0] = key;
   }
 
   @action
   q1Touch(key) {
-    this.surveyChoice[1] = key;
+    this.multipleChoiceAnswers[1] = key;
   }
 
   @action
   q2Touch(key) {
-    this.surveyChoice[2][key] = !this.surveyChoice[2][key];
+    this.multipleChoiceAnswers[2][key] = !this.multipleChoiceAnswers[2][key];
   }
 
   @action
-  q3OnChange(val) {
-    this.surveyChoice[3] = val;
+  additionalOnChange(val) {
+    this.additionalInfo[0] = val;
+  }
+
+  @action
+  clearMultipleChoice() {
+    this.multipleChoiceAnswers = [-1, -1, [false, false, false]];
+  }
+
+  @action
+  clearAdditional() {
+    this.additionalInfo = [""];
   }
 }
 
