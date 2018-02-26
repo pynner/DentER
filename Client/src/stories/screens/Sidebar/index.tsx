@@ -12,21 +12,6 @@ import {
 } from "native-base";
 import { NavigationActions } from "react-navigation";
 
-const routes = [
-  {
-    route: "Home",
-    caption: "Home"
-  },
-  {
-    route: "MultipleChoice",
-    caption: "New Request"
-  },
-  {
-    route: "Login",
-    caption: "Logout"
-  }
-];
-
 export interface Props {
   navigation: any;
 }
@@ -44,19 +29,27 @@ export default class Sidebar extends React.Component<Props, State> {
             <ListItem
               button
               onPress={() => {
-                this.props.navigation.navigate(routes[0].route);
+                this.props.navigation.navigate("Home");
               }}
             >
-              <Text>{routes[0].caption}</Text>
+              <Text>Home</Text>
             </ListItem>
 
+            <ListItem
+              button
+              onPress={() => {
+                this.props.navigation.navigate("Calender");
+              }}
+            >
+              <Text>Calender</Text>
+            </ListItem>
             <ListItem
               button
               onPress={() => {
                 this.props.navigation.dispatch(resetAction);
               }}
             >
-              <Text>{routes[2].caption}</Text>
+              <Text>Logout</Text>
             </ListItem>
           </List>
         </Content>
@@ -67,7 +60,7 @@ export default class Sidebar extends React.Component<Props, State> {
               full
               success
               onPress={() => {
-                this.props.navigation.navigate(routes[1].route);
+                this.props.navigation.navigate("MultipleChoice");
               }}
             >
               <H2 style={{ color: "white", fontWeight: "bold" }}>
