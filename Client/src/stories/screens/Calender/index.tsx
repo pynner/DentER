@@ -14,18 +14,20 @@ import {
 } from "native-base";
 import { NavigationActions } from "react-navigation";
 
+import { Calendar, CalendarList, Agenda } from "react-native-calendars";
+
 import styles from "./styles";
 export interface Props {
   navigation: any;
-  surveyQuestions: any;
-  reset: Function;
+  calender: any;
+  onRefresh: Function;
 }
 const resetAction = NavigationActions.reset({
   index: 0,
   actions: [NavigationActions.navigate({ routeName: "Drawer" })]
 });
 export interface State {}
-class MultipleChoice extends React.Component<Props, State> {
+class Calender extends React.Component<Props, State> {
   render() {
     return (
       <Container style={styles.container}>
@@ -40,41 +42,20 @@ class MultipleChoice extends React.Component<Props, State> {
           </Left>
 
           <Body style={{ flex: 3 }}>
-            <Title>New Submission</Title>
+            <Title>On-Call Calender</Title>
           </Body>
 
           <Right>
-            <Button transparent onPress={() => this.props.reset()}>
+            <Button transparent onPress={() => console.log("Refresh calender")}>
               <Icon name="ios-refresh" />
             </Button>
           </Right>
         </Header>
 
-        <Content padder>
-          {this.props.surveyQuestions}
-          {/* View to add padding so can scroll to bottom item */}
-          <View style={{ marginBottom: 100 }} />
-        </Content>
-
-        {/* Survey Navigation */}
-        <View style={styles.navigation}>
-          <Button transparent />
-          <Button
-            transparent
-            onPress={() => this.props.navigation.navigate("Additional")}
-          >
-            <Text style={{ color: "white", paddingRight: 0, fontSize: 20 }}>
-              Next
-            </Text>
-            <Icon
-              name="arrow-forward"
-              style={{ color: "white", marginLeft: 10, fontSize: 45 }}
-            />
-          </Button>
-        </View>
+        <Content padder>{this.props.calender}</Content>
       </Container>
     );
   }
 }
 
-export default MultipleChoice;
+export default Calender;
