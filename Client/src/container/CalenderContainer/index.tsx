@@ -1,6 +1,6 @@
 import * as React from "react";
 import { observer, inject } from "mobx-react/native";
-import { CalendarList } from "react-native-calendars";
+import { Calendar } from "react-native-calendars";
 
 import Calender from "../../stories/screens/Calender";
 
@@ -52,7 +52,8 @@ export default class CalenderContainer extends React.Component<Props, State> {
     };
     const form = this.props.calenderStore;
     const Fields = (
-      <CalendarList
+      <Calendar
+        scrollEnabled={false}
         onDayPress={day => {
           this.showDentist(months, day);
         }}
