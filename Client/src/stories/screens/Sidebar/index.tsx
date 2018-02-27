@@ -41,7 +41,7 @@ export default class Sidebar extends React.Component<Props, State> {
                 this.props.navigation.navigate("Calender");
               }}
             >
-              <Text>Calender</Text>
+              <Text>Calendar</Text>
             </ListItem>
             <ListItem
               button
