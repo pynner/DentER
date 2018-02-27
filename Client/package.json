@@ -29,11 +29,11 @@
     "typescript": "2.6.2"
   },
   "scripts": {
-    "start": "react-native start",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
     "jest": "node node_modules/jest/bin/jest.js",
     "watch": "npm run build -- -w",
     "ios": "react-native run-ios",
-    "android": "react-native run-android",
+    "android": "node node_modules/react-native/local-cli/cli.js run-android",
     "tsc": "tsc",
     "clean": "rimraf artifacts",
     "build": "npm run clean && npm run tsc --",
@@ -43,7 +43,11 @@
   },
   "jest": {
     "preset": "jest-expo",
-    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
     "transform": {
       "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
@@ -60,6 +64,7 @@
     "native-base": "2.3.5",
     "react": "16.2.0",
     "react-native": "0.51.0",
+    "react-native-calendars": "^1.17.2",
     "react-navigation": "1.0.0-beta.21"
   }
 }

@@ -40,7 +40,7 @@ class MultipleChoice extends React.Component<Props, State> {
           </Left>
 
           <Body style={{ flex: 3 }}>
-            <Title>New Submission Request</Title>
+            <Title>New Submission</Title>
           </Body>
 
           <Right>

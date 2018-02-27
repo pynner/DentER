@@ -40,7 +40,7 @@ class Home extends React.Component<Props, State> {
         </Header>
         <Content>
           <H1> Welcome to DentER! </H1>
-          <H3> The best way to conect with dentists on-call </H3>
+          <H3> The best way to connect with dentists on-call </H3>
         </Content>
       </Container>
     );

@@ -11,6 +11,7 @@ import MultipleChoice from "./container/MultipleChoiceContainer";
 import Additional from "./container/AdditionalContainer";
 import Sidebar from "./container/SidebarContainer";
 import TwoFactor from "./container/TwoFactorContainer";
+import Calender from "./container/CalenderContainer";
 
 const Drawer = DrawerNavigator(
   {
@@ -29,7 +30,8 @@ const App = StackNavigator(
     MultipleChoice: { screen: MultipleChoice },
     Additional: { screen: Additional },
     Drawer: { screen: Drawer },
-    TwoFactor: { screen: TwoFactor }
+    TwoFactor: { screen: TwoFactor },
+    Calender: { screen: Calender }
   },
   {
     initialRouteName: "Drawer",
