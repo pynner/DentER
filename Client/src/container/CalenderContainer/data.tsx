@@ -1,26 +1,13 @@
-export default [
-  {
-    question: 1,
-    title: "Where is the pain coming from?",
-    options: ["Teeth", "Gums", "Jaw", "Head"],
-    selectionType: "single"
-  },
-  {
-    question: 2,
-    title: "How long have you been experiencing this pain for?",
-    options: ["Today", "A few days", "One week", "Longer than one week"],
-    selectionType: "single"
-  },
-  {
-    question: 3,
-    title: "Are you experiencing any of these symptoms?",
-    options: ["Bleeding", "Hard Lumps", "Soft Lumps"],
-    selectionType: "multiple"
-  },
-  {
-    question: 4,
-    title: "Any additional comments?",
-    options: [],
-    selectionType: "textInput"
-  }
-];
+export default {
+  "2018-02-01": "Dr. Pynn",
+  "2018-02-02": "Dr. Twin",
+  "2018-02-03": "Dr. Finn",
+  "2018-02-04": "Dr. Chizz",
+  "2018-02-05": "Dr. Rynn",
+  "2018-02-06": "Dr. Glyn",
+  "2018-02-07": "Dr. Rein",
+  "2018-02-08": "Dr. Onxn",
+  "2018-02-09": "Dr. Pynn",
+  "2018-02-10": "Dr. Winn",
+  "2018-02-11": "Dr. Lauren"
+};
