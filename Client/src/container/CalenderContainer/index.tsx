@@ -47,7 +47,9 @@ export default class CalenderContainer extends React.Component<Props, State> {
 
   showDentist(day) {
     Alert.alert(
-      this.dates[day.dateString] + " is On-Call",
+      this.dates[day.dateString] != undefined
+        ? this.dates[day.dateString]
+        : "Dr.Error" + " is On-Call",
       this.months[day.month] + " " + day.day + " " + day.year,
       [
         {
