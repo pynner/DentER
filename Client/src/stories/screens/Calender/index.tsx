@@ -4,17 +4,13 @@ import {
   Header,
   Title,
   Content,
-  Text,
   Button,
   Icon,
   Left,
   Right,
-  Body,
-  View
+  Body
 } from "native-base";
 import { NavigationActions } from "react-navigation";
-
-import { Calendar, CalendarList, Agenda } from "react-native-calendars";
 
 import styles from "./styles";
 export interface Props {
