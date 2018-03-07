@@ -6,6 +6,8 @@ import Calender from "../../stories/screens/Calender";
 
 import { Alert } from "react-native";
 
+import data from "./data";
+
 export interface Props {
   navigation: any;
   calenderStore: any;
@@ -15,29 +17,12 @@ export interface State {}
 @inject("calenderStore")
 @observer
 export default class CalenderContainer extends React.Component<Props, State> {
-  phoneInput: any;
-  refresh() {
-    // get new calender data
-  }
+  months: Object;
+  dates: Object;
 
-  showDentist(months, day) {
-    Alert.alert(
-      // @PULL DOC FROM DATA
-      "Dr. Pynn is On-Call",
-      months[day.month] + " " + day.day + " " + day.year,
-      [
-        {
-          text: "Ok",
-          onPress: () => {
-            console.log("Submitted");
-          }
-        }
-      ],
-      { cancelable: false }
-    );
-  }
-  render() {
-    const months = {
+  constructor(props) {
+    super(props);
+    this.months = {
       1: "January	",
       2: "February",
       3: "March",
@@ -50,21 +35,47 @@ export default class CalenderContainer extends React.Component<Props, State> {
       11: "November",
       12: "December"
     };
-    const form = this.props.calenderStore;
+  }
+  refresh() {
+    // get new calender data
+  }
+
+  componentWillMount() {
+    this.props.calenderStore.fetchItems(data);
+    this.dates = this.props.calenderStore.calendarArray;
+  }
+
+  showDentist(day) {
+    Alert.alert(
+      this.dates[day.dateString] != undefined
+        ? this.dates[day.dateString]
+        : "Dr.Error" + " is On-Call",
+      this.months[day.month] + " " + day.day + " " + day.year,
+      [
+        {
+          text: "Ok",
+          onPress: () => {
+            console.log("Submitted");
+          }
+        }
+      ],
+      { cancelable: false }
+    );
+  }
+  render() {
+    const store = this.props.calenderStore;
     const Fields = (
       <Calendar
+        displayLoadingIndicator={store.isLoading}
         scrollEnabled={false}
         onDayPress={day => {
-          this.showDentist(months, day);
+          this.showDentist(day);
         }}
         markedDates={{
           "2018-02-01": {
             startingDay: true,
+            endingDay: true,
             color: "#98fb98"
-          },
-          "2018-02-02": {
-            color: "#98fb98",
-            endingDay: true
           }
         }}
         markingType={"period"}
