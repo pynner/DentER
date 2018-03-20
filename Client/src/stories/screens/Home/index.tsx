@@ -4,7 +4,6 @@ import {
   Header,
   Title,
   Content,
-  Text,
   Button,
   Icon,
   Left,

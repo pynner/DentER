@@ -13,6 +13,12 @@ import Sidebar from "./container/SidebarContainer";
 import TwoFactor from "./container/TwoFactorContainer";
 import Calender from "./container/CalenderContainer";
 
+import Amplify from "aws-amplify";
+import awsmobile from "../awsmobilejs/#current-backend-info/aws-exports";
+import { withAuthenticator } from "aws-amplify-react-native";
+
+Amplify.configure(awsmobile);
+
 const Drawer = DrawerNavigator(
   {
     Home: { screen: Home }
@@ -39,8 +45,10 @@ const App = StackNavigator(
   }
 );
 
-export default () => (
+const app = () => (
   <Root>
     <App />
   </Root>
 );
+
+export default withAuthenticator(app);
