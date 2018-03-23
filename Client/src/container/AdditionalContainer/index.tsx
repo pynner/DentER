@@ -23,6 +23,10 @@ export default class AdditionalContainer extends React.Component<Props, State> {
     this.props.surveyStore.clearAdditional();
   }
 
+  submitSurvey() {
+    this.props.surveyStore.saveSurvey();
+  }
+
   render() {
     const survey = this.props.surveyStore;
     const Fields = (
@@ -58,6 +62,7 @@ export default class AdditionalContainer extends React.Component<Props, State> {
         navigation={this.props.navigation}
         surveyQuestions={Fields}
         reset={() => this.resetForm()}
+        submit={() => this.submitSurvey()}
       />
     );
   }

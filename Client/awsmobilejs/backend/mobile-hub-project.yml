@@ -2,6 +2,60 @@
 apps:
   react-native: !com.amazonaws.mobilehub.v0.AppDO {}
 features:
+  cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
+    components:
+      surveyCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          disable-aws-auth: false
+          name: surveyCRUD
+          requires-signin: false
+          sdk-generation-stage-name: Development
+        paths:
+          /survey: !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/survey-20180323155337.zip
+            description: 'Handler for calls to resource path : /survey/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: FHj3WsdItggKiusrjGwH/6YYUzaAamv/rmDum8NV5W0=
+            memorySize: '128'
+            modified: '2018-03-23T19:54:09.962+0000'
+            name: survey
+            runtime: nodejs6.10
+            timeout: '3'
+            version: c5pGJGes09qr6B.t81xz6N9BnDFyCzjM
+          '/survey/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/survey-20180323155337.zip
+            description: 'Handler for calls to resource path : /survey/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: FHj3WsdItggKiusrjGwH/6YYUzaAamv/rmDum8NV5W0=
+            memorySize: '128'
+            modified: '2018-03-23T19:54:09.962+0000'
+            name: survey
+            runtime: nodejs6.10
+            timeout: '3'
+            version: c5pGJGes09qr6B.t81xz6N9BnDFyCzjM
+  database: !com.amazonaws.mobilehub.v0.Database 
+    components:
+      database-nosql: !com.amazonaws.mobilehub.v0.NoSQLDatabase 
+        tables:
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
+              addInfo: S
+              dentist: S
+              hasSeen: BOOL
+              multipleChoiceAnswers: L
+              submissionDate: N
+              submissionId: S
+              userId: S
+            hashKeyName: submissionId
+            hashKeyType: S
+            rangeKeyName: ''
+            rangeKeyType: ''
+            tableName: ___DYNAMIC_PREFIX___-survey
+            tablePrivacy: public
   mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint 
     components:
       analytics: !com.amazonaws.mobilehub.v0.PinpointAnalytics {}
