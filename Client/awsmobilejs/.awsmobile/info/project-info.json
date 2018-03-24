@@ -11,12 +11,12 @@
 	"FrontendLastBuildTime": "",
 	"LastPublishTime": "",
 	"BackendFormat": "yml",
-	"BackendLastBuildTime": "2018-03-08-16-14-24",
-	"BackendLastUpdateTime": "2018-03-08-16-14-41",
+	"BackendLastBuildTime": "2018-03-23-22-13-57",
+	"BackendLastUpdateTime": "2018-03-23-22-15-51",
 	"BackendLastUpdateSuccessful": true,
 	"BackendProjectID": "3cabbc64-7e26-4744-932e-716ab95cdd40",
 	"BackendProjectName": "DentER",
 	"BackendProjectConsoleUrl": "https://console.aws.amazon.com/mobilehub/home#/3cabbc64-7e26-4744-932e-716ab95cdd40/build",
 	"BackendProjectCreationTime": "2018-03-08T21:08:56.226Z",
-	"BackendProjectLastUpdatedTime": "2018-03-08T21:41:09.331Z"
+	"BackendProjectLastUpdatedTime": "2018-03-24T03:10:12.590Z"
 }

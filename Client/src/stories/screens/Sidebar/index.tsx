@@ -17,14 +17,13 @@ import {
 } from "native-base";
 import { NavigationActions } from "react-navigation";
 
+import { Auth } from "aws-amplify";
+
 export interface Props {
   navigation: any;
 }
 export interface State {}
-const resetAction = NavigationActions.reset({
-  index: 0,
-  actions: [NavigationActions.navigate({ routeName: "Login" })]
-});
+
 export default class Sidebar extends React.Component<Props, State> {
   render() {
     return (
@@ -39,7 +38,9 @@ export default class Sidebar extends React.Component<Props, State> {
               </Body>
             </Left>
           </CardItem>
-          <Button full info>
+          <Button full info onPress={() => Auth.signOut()
+                  .then(data => console.log(data))
+                  .catch(err => console.log(err));}>
             <Text>Sign out</Text>
           </Button>
           <List style={{ marginTop: 0 }}>
@@ -75,6 +76,7 @@ export default class Sidebar extends React.Component<Props, State> {
               button
               onPress={() => {
                 this.props.navigation.navigate("Home");
+
               }}
             >
               <Text>Home</Text>

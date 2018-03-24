@@ -1,5 +1,7 @@
 import { observable, action } from "mobx";
 
+import { API, Auth } from "aws-amplify";
+
 class SurveyStore {
   @observable hasErrored = false;
   @observable isLoading = true;
@@ -41,6 +43,45 @@ class SurveyStore {
   @action
   clearAdditional() {
     this.additionalInfo = [""];
+  }
+  // Submit survey to AWS
+  @action
+  async saveSurvey() {
+    const currentUser = await Auth.currentAuthenticatedUser()
+      .then(response => {
+        return response.username;
+      })
+      .catch(error => {
+        console.log("Error getting user:" + error);
+      });
+
+    let newNote = {
+      body: {
+        addInfo: this.additionalInfo[0],
+        dentist: "Dr.Tester",
+        multipleChoiceAnswers: this.multipleChoiceAnswers,
+        hasSeen: false,
+        isComplete: false,
+        submissionDate: new Date().getTime(),
+        userId: currentUser,
+        submissionId: currentUser + new Date().getTime()
+      }
+    };
+    const path = "/survey";
+
+    // Use the API module to save the note to the database
+    try {
+      console.log(newNote);
+      const apiResponse = await API.put("surveyCRUD", path, newNote);
+      console.log("<< response from saving survey >>");
+      console.log(apiResponse);
+
+      // Clear store
+      this.multipleChoiceAnswers = [-1, -1, [false, false, false]];
+      this.additionalInfo = [""];
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
 

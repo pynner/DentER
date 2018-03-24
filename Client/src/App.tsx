@@ -12,6 +12,7 @@ import Additional from "./container/AdditionalContainer";
 import Sidebar from "./container/SidebarContainer";
 import TwoFactor from "./container/TwoFactorContainer";
 import Calender from "./container/CalenderContainer";
+import Submissions from "./container/SubmissionsContainer";
 
 import Amplify from "aws-amplify";
 import awsmobile from "../awsmobilejs/#current-backend-info/aws-exports";
@@ -37,7 +38,8 @@ const App = StackNavigator(
     Additional: { screen: Additional },
     Drawer: { screen: Drawer },
     TwoFactor: { screen: TwoFactor },
-    Calender: { screen: Calender }
+    Calender: { screen: Calender },
+    Submissions: { screen: Submissions }
   },
   {
     initialRouteName: "Drawer",

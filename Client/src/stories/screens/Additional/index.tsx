@@ -21,6 +21,7 @@ export interface Props {
   navigation: any;
   surveyQuestions: any;
   reset: Function;
+  submit: Function;
 }
 const resetAction = NavigationActions.reset({
   index: 0,
@@ -38,6 +39,7 @@ class Additional extends React.Component<Props, State> {
           text: "Yes",
           onPress: () => {
             console.log("Submitted");
+            this.props.submit();
             this.props.navigation.dispatch(resetAction);
           }
         },

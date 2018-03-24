@@ -17,3 +17,4 @@ artifacts/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+Client/src/aws-exports.js
