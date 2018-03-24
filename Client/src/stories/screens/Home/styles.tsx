@@ -2,16 +2,22 @@ import { StyleSheet } from "react-native";
 
 const styles: any = StyleSheet.create({
 	container: {
-		backgroundColor: "#FBFAFA",
+		backgroundColor: "#ffffff"
+	},
+	h3: {
+		color: "red"
+	},
+	h1: {
+		borderColor: "black"
 	},
 	row: {
-		flex: 1,
-		alignItems: "center",
+		flex: 2,
+		alignItems: "center"
 	},
 	text: {
-		fontSize: 20,
+		fontSize: 10,
 		marginBottom: 15,
-		alignItems: "center",
+		alignItems: "center"
 	},
 	mt: {
 		marginTop: 18,
