@@ -12,6 +12,8 @@ import {
 } from "native-base";
 import { NavigationActions } from "react-navigation";
 
+import { Auth } from "aws-amplify";
+
 export interface Props {
   navigation: any;
 }
@@ -46,7 +48,9 @@ export default class Sidebar extends React.Component<Props, State> {
             <ListItem
               button
               onPress={() => {
-                this.props.navigation.dispatch(resetAction);
+                Auth.signOut()
+                  .then(data => console.log(data))
+                  .catch(err => console.log(err));
               }}
             >
               <Text>Logout</Text>

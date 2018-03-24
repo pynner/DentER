@@ -12,7 +12,7 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /survey: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/survey-20180323155337.zip
+            codeFilename: uploads/survey-20180323221345.zip
             description: 'Handler for calls to resource path : /survey/{proxy+}'
             enableCORS: true
             environment: {}
@@ -25,7 +25,7 @@ features:
             timeout: '3'
             version: c5pGJGes09qr6B.t81xz6N9BnDFyCzjM
           '/survey/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/survey-20180323155337.zip
+            codeFilename: uploads/survey-20180323221345.zip
             description: 'Handler for calls to resource path : /survey/{proxy+}'
             enableCORS: true
             environment: {}
