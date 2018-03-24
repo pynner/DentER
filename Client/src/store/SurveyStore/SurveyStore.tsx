@@ -45,6 +45,12 @@ class SurveyStore {
     this.additionalInfo = [""];
   }
 
+  @action
+  clearStore() {
+    this.multipleChoiceAnswers = [-1, -1, [false, false, false]];
+    this.additionalInfo = [""];
+  }
+
   // Submit survey to AWS
   @action
   async saveSurvey() {
@@ -62,6 +68,7 @@ class SurveyStore {
         dentist: "Dr.Tester",
         multipleChoiceAnswers: this.multipleChoiceAnswers,
         hasSeen: false,
+        isComplete: false,
         submissionDate: new Date().getTime(),
         userId: currentUser,
         submissionId: currentUser + new Date().getTime()
