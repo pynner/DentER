@@ -12,31 +12,31 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /survey: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/survey-20180324054041.zip
+            codeFilename: uploads/survey-20180324060843.zip
             description: 'Handler for calls to resource path : /survey/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: VamszpnA6ZXsWChjgGb3Lxe4WNSgbQvi9S0dNhDVFiY=
+            hashcode: W2t0TtN5WJXFHBij5rO4jjVpCd5yC7I9hWStDUB+PUI=
             memorySize: '128'
-            modified: '2018-03-24T02:15:16.582+0000'
+            modified: '2018-03-24T09:42:36.317+0000'
             name: survey
             runtime: nodejs6.10
             timeout: '3'
-            version: 1b.RDOWHiGiUtO4mrVLfikhrVCCpKEFV
+            version: k5sAVXOJ1ipWZLX32EsXPcfYwNdedN3I
           '/survey/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/survey-20180324054041.zip
+            codeFilename: uploads/survey-20180324060843.zip
             description: 'Handler for calls to resource path : /survey/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: VamszpnA6ZXsWChjgGb3Lxe4WNSgbQvi9S0dNhDVFiY=
+            hashcode: W2t0TtN5WJXFHBij5rO4jjVpCd5yC7I9hWStDUB+PUI=
             memorySize: '128'
-            modified: '2018-03-24T02:15:16.582+0000'
+            modified: '2018-03-24T09:42:36.317+0000'
             name: survey
             runtime: nodejs6.10
             timeout: '3'
-            version: hofN1YtR5BRn11.y7_d64QPJPIJGB9yu
+            version: 6ZRIHMZ6hh3a83I6Mgvob9CPWbE74D56
   database: !com.amazonaws.mobilehub.v0.Database 
     components:
       database-nosql: !com.amazonaws.mobilehub.v0.NoSQLDatabase 
@@ -53,6 +53,13 @@ features:
               userId: S
             hashKeyName: submissionId
             hashKeyType: S
+            indexes:
+              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
+                hashKeyName: dentist
+                hashKeyType: S
+                indexName: DentistIndex
+                rangeKeyName: userId
+                rangeKeyType: S
             rangeKeyName: ''
             rangeKeyType: ''
             tableName: ___DYNAMIC_PREFIX___-survey

@@ -58,7 +58,7 @@ class SurveyStore {
     let newNote = {
       body: {
         addInfo: this.additionalInfo[0],
-        dentist: "Dr.Tester",
+        dentist: "Dr.Lameo",
         multipleChoiceAnswers: this.multipleChoiceAnswers,
         hasSeen: false,
         isComplete: false,

@@ -241,12 +241,9 @@ app.delete("/survey/object/:submissionId", function(req, res) {
  * HTTP get method to get all objects *
  ***************************************/
 
-//  NOT WORKING
-
-app.get("/survey/all", function(req, res) {
+app.get("/survey/allObj/:submissionId", function(req, res) {
   const payload = {
     TableName: tableName,
-    Limit: 50, // optional (limit the number of items to evaluate)
     Select: "ALL_ATTRIBUTES"
   };
 
