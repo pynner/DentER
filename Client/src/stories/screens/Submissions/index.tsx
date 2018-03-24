@@ -40,7 +40,7 @@ class Submissions extends React.Component<Props, State> {
           </Body>
 
           <Right>
-            <Button transparent onPress={() => console.log("Refresh calender")}>
+            <Button transparent onPress={() => this.props.onRefresh()}>
               <Icon name="ios-refresh" />
             </Button>
           </Right>

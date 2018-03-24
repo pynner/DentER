@@ -6,11 +6,11 @@ import Submissions from "../../stories/screens/Submissions";
 
 export interface Props {
   navigation: any;
-  surveyStore: any;
+  submissionsStore: any;
 }
 export interface State {}
 
-@inject("surveyStore")
+@inject("submissionsStore")
 @observer
 export default class SubmissionsContainer extends React.Component<
   Props,
@@ -18,20 +18,12 @@ export default class SubmissionsContainer extends React.Component<
 > {
   addInfo: any;
 
-  resetForm() {
-    this.props.surveyStore.clearAdditional();
-  }
-
-  submitSurvey() {
-    this.props.surveyStore.saveSurvey();
-  }
-
   refresh() {
-    // get new submission data
+    this.props.submissionsStore.getAllSubmissions();
   }
 
   render() {
-    const survey = this.props.surveyStore;
+    const survey = this.props.submissionsStore;
     const style = <View style={styles.horizontalLine} />;
     return (
       <Submissions
