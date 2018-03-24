@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Image, Platform } from "react-native";
 import {
   Text,
   Container,
@@ -7,8 +8,12 @@ import {
   Content,
   Footer,
   Button,
+  Body,
   FooterTab,
-  H2
+  H2,
+  CardItem,
+  Left, Right,
+  Thumbnail
 } from "native-base";
 import { NavigationActions } from "react-navigation";
 
@@ -25,7 +30,16 @@ export default class Sidebar extends React.Component<Props, State> {
     return (
       <Container>
         <Content>
-          <List style={{ marginTop: 40 }}>
+          <CardItem>
+            <Left>
+              <Thumbnail source={require("../../../../assets/profile.jpg")} />
+              <Body>
+                <Text>Signed in as</Text>
+                <Text note>Mitchell Pynn</Text>
+              </Body>
+            </Left>
+          </CardItem>
+          <List style={{ marginTop: 0 }}>
             <ListItem
               button
               onPress={() => {
@@ -49,7 +63,7 @@ export default class Sidebar extends React.Component<Props, State> {
                 this.props.navigation.dispatch(resetAction);
               }}
             >
-              <Text>Logout</Text>
+              <Text>Sign out</Text>
             </ListItem>
           </List>
         </Content>

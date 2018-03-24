@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Image, Platform } from "react-native";
 import {
   Container,
   Header,
@@ -40,13 +41,17 @@ class Home extends React.Component<Props, State> {
 					</Body>
 					<Right />
 				</Header>
-				<Content>
+				<Content padder>
+					<Body>
+						<Image
+							source={require("../../../../assets/DentER_logo.png")}
+							style={{ width: 650 / 4, height: 650 / 4 }}
+						/>
+					</Body>
 					<Card>
 						<CardItem header>
 							<Body>
-								<H1>
-									Welcome to DentER!
-								</H1>
+								<H3>Welcome to DentER!</H3>
 							</Body>
 						</CardItem>
 						<CardItem>
@@ -57,6 +62,12 @@ class Home extends React.Component<Props, State> {
 							</Body>
 						</CardItem>
 					</Card>
+					<Body>
+						<Text>   </Text>
+						<Text>
+							Swipe right to get started.
+						</Text>
+					</Body>
 				</Content>
 			</Container>
 		);
