@@ -18,10 +18,7 @@ export interface Props {
   navigation: any;
 }
 export interface State {}
-const resetAction = NavigationActions.reset({
-  index: 0,
-  actions: [NavigationActions.navigate({ routeName: "Login" })]
-});
+
 export default class Sidebar extends React.Component<Props, State> {
   render() {
     return (
