@@ -44,13 +44,6 @@ class SurveyStore {
   clearAdditional() {
     this.additionalInfo = [""];
   }
-
-  @action
-  clearStore() {
-    this.multipleChoiceAnswers = [-1, -1, [false, false, false]];
-    this.additionalInfo = [""];
-  }
-
   // Submit survey to AWS
   @action
   async saveSurvey() {
@@ -78,9 +71,14 @@ class SurveyStore {
 
     // Use the API module to save the note to the database
     try {
+      console.log(newNote);
       const apiResponse = await API.put("surveyCRUD", path, newNote);
       console.log("<< response from saving survey >>");
       console.log(apiResponse);
+
+      // Clear store
+      this.multipleChoiceAnswers = [-1, -1, [false, false, false]];
+      this.additionalInfo = [""];
     } catch (e) {
       console.log(e);
     }

@@ -27,10 +27,6 @@ export default class AdditionalContainer extends React.Component<Props, State> {
     this.props.surveyStore.saveSurvey();
   }
 
-  clearSurvey() {
-    this.props.surveyStore.clearStore();
-  }
-
   render() {
     const survey = this.props.surveyStore;
     const Fields = (
@@ -67,7 +63,6 @@ export default class AdditionalContainer extends React.Component<Props, State> {
         surveyQuestions={Fields}
         reset={() => this.resetForm()}
         submit={() => this.submitSurvey()}
-        clear={() => this.clearSurvey()}
       />
     );
   }
