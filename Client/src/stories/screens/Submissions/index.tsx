@@ -54,7 +54,9 @@ class Submissions extends React.Component<Props, State> {
             <Separator bordered>
               <Text>PATIENT SUBMISSIONS</Text>
             </Separator>
-            <CardItem>
+            <CardItem button onPress={() => {
+              this.props.navigation.navigate("SubmissionDetails");
+            }}>
               <Icon style={{color: "red"}}name="md-notifications" />
               <Body>
                 <Text>Liam Kent</Text>
@@ -63,7 +65,9 @@ class Submissions extends React.Component<Props, State> {
                 <Text note>May 31, 2011</Text>
               </Right>
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={() => {
+              this.props.navigation.navigate("SubmissionDetails");
+            }}>
               <Icon active style={{color: "lightgray"}} name="md-eye" />
               <Body>
                 <Text>Larry David</Text>
@@ -72,7 +76,9 @@ class Submissions extends React.Component<Props, State> {
                 <Text note>April 4, 2011</Text>
               </Right>
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={() => {
+              this.props.navigation.navigate("SubmissionDetails");
+            }}>
               <Icon active style={{color: "lightgray"}} name="md-eye" />
               <Body>
                 <Text>Mitchell Pine</Text>
@@ -81,7 +87,9 @@ class Submissions extends React.Component<Props, State> {
                 <Text note>June 5, 2010</Text>
               </Right>
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={() => {
+              this.props.navigation.navigate("SubmissionDetails");
+            }}>
               <Icon active style={{color: "lightgray"}} name="md-eye" />
               <Body>
                 <Text>Susie Green</Text>
@@ -90,7 +98,9 @@ class Submissions extends React.Component<Props, State> {
                 <Text note>August 14, 2009</Text>
               </Right>
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={() => {
+              this.props.navigation.navigate("SubmissionDetails");
+            }}>
               <Icon active style={{color: "lightgray"}} name="md-eye" />
               <Body>
                 <Text>Ted Beneke</Text>

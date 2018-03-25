@@ -36,17 +36,11 @@ class Home extends React.Component<Props, State> {
             </Button>
           </Left>
           <Body>
-            <Title>Home</Title>
+            <Title>DentER</Title>
           </Body>
           <Right />
         </Header>
         <Content padder>
-          <Body>
-            <Image
-              source={require("../../../../assets/DentER_logo.png")}
-              style={{ width: 650 / 4, height: 650 / 4 }}
-            />
-          </Body>
           <Card>
             <CardItem header>
               <Body>
@@ -59,9 +53,20 @@ class Home extends React.Component<Props, State> {
               </Body>
             </CardItem>
           </Card>
+          <Card>
+            <CardItem>
+              <Icon style={{color: "red"}}name="md-notifications" />
+              <Text>You have 17 notifications.</Text>
+            </CardItem>
+          </Card>
           <Body>
             <Text> </Text>
             <Text>Swipe right to get started.</Text>
+            <Text> </Text>
+            <Image
+              source={require("../../../../assets/DentER_logo.png")}
+              style={{ width: 650 / 8, height: 650 / 8 }}
+            />
           </Body>
         </Content>
       </Container>
