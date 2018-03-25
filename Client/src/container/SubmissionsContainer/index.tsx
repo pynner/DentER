@@ -1,7 +1,5 @@
 import * as React from "react";
 import { observer, inject } from "mobx-react/native";
-import { View } from "native-base";
-import styles from "./styles";
 import Submissions from "../../stories/screens/Submissions";
 
 export interface Props {
@@ -16,19 +14,21 @@ export default class SubmissionsContainer extends React.Component<
   Props,
   State
 > {
-  addInfo: any;
+  componentWillMount() {
+    this.props.submissionsStore.getAllSubmissions();
+  }
 
   refresh() {
     this.props.submissionsStore.getAllSubmissions();
   }
 
   render() {
-    const survey = this.props.submissionsStore;
-    const style = <View style={styles.horizontalLine} />;
+    const submissionList = this.props.submissionsStore.submissionsArray.toJS();
     return (
       <Submissions
         navigation={this.props.navigation}
         onRefresh={() => this.refresh()}
+        submissionList={submissionList}
       />
     );
   }

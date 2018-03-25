@@ -4,9 +4,40 @@ apps:
 features:
   cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
     components:
+      calenderCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: calenderCRUD
+          requires-signin: false
+          sdk-generation-stage-name: Development
+        paths:
+          /calender: !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/calender-20180325155815.zip
+            description: 'Handler for calls to resource path : /calender/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: QSU7ol8c/061RPhyxcY/mgb6wbk2UN62Aksryrpw3Ko=
+            memorySize: '128'
+            modified: '2018-03-25T19:58:48.629+0000'
+            name: calender
+            runtime: nodejs6.10
+            timeout: '3'
+            version: dt2NVrIWBWGoOhyg3WjFIPzpbkxwuqah
+          '/calender/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/calender-20180325155815.zip
+            description: 'Handler for calls to resource path : /calender/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: QSU7ol8c/061RPhyxcY/mgb6wbk2UN62Aksryrpw3Ko=
+            memorySize: '128'
+            modified: '2018-03-25T19:58:48.629+0000'
+            name: calender
+            runtime: nodejs6.10
+            timeout: '3'
+            version: zsfcIOyLyASj_yblWehaoo8mWReW2RPl
       surveyCRUD: !com.amazonaws.mobilehub.v0.API 
         attributes:
-          disable-aws-auth: false
           name: surveyCRUD
           requires-signin: false
           sdk-generation-stage-name: Development
@@ -17,37 +48,51 @@ features:
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: W2t0TtN5WJXFHBij5rO4jjVpCd5yC7I9hWStDUB+PUI=
+            hashcode: OY2f7DskIAGEsvuwA8SWDMapTEkMGRydiJIYTYImcJE=
             memorySize: '128'
-            modified: '2018-03-24T09:42:36.317+0000'
+            modified: '2018-03-25T19:58:49.788+0000'
             name: survey
             runtime: nodejs6.10
             timeout: '3'
-            version: k5sAVXOJ1ipWZLX32EsXPcfYwNdedN3I
+            version: Ac3aO0Vw8pjspa753Z5VPbUma5mljx3L
           '/survey/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
             codeFilename: uploads/survey-20180325004559.zip
             description: 'Handler for calls to resource path : /survey/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: W2t0TtN5WJXFHBij5rO4jjVpCd5yC7I9hWStDUB+PUI=
+            hashcode: OY2f7DskIAGEsvuwA8SWDMapTEkMGRydiJIYTYImcJE=
             memorySize: '128'
-            modified: '2018-03-24T09:42:36.317+0000'
+            modified: '2018-03-25T19:58:49.788+0000'
             name: survey
             runtime: nodejs6.10
             timeout: '3'
-            version: 6ZRIHMZ6hh3a83I6Mgvob9CPWbE74D56
+            version: iRrwB2kcvkHdaBBI3b4vq4f9BeHt1mso
   database: !com.amazonaws.mobilehub.v0.Database 
     components:
       database-nosql: !com.amazonaws.mobilehub.v0.NoSQLDatabase 
         tables:
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
+              date: N
+              dentist: S
+            hashKeyName: date
+            hashKeyType: N
+            rangeKeyName: ''
+            rangeKeyType: ''
+            tableName: ___DYNAMIC_PREFIX___-calender
+            tablePrivacy: public
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
               addInfo: S
+              age: N
               dentist: S
               hasSeen: BOOL
               isComplete: BOOL
               multipleChoiceAnswers: L
+              name: S
+              phone: S
+              sex: S
               submissionDate: N
               submissionId: S
               userId: S

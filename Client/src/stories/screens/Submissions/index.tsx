@@ -9,7 +9,8 @@ import {
   Right,
   Body,
   Content,
-  Card, CardItem,
+  Card,
+  CardItem,
   Text,
   Separator
 } from "native-base";
@@ -19,6 +20,7 @@ import styles from "./styles";
 export interface Props {
   navigation: any;
   onRefresh: Function;
+  submissionList: any;
 }
 const resetAction = NavigationActions.reset({
   index: 0,
@@ -54,10 +56,13 @@ class Submissions extends React.Component<Props, State> {
             <Separator bordered>
               <Text>PATIENT SUBMISSIONS</Text>
             </Separator>
-            <CardItem button onPress={() => {
-              this.props.navigation.navigate("SubmissionDetails");
-            }}>
-              <Icon style={{color: "red"}}name="md-notifications" />
+            <CardItem
+              button
+              onPress={() => {
+                this.props.navigation.navigate("SubmissionDetails");
+              }}
+            >
+              <Icon style={{ color: "red" }} name="md-notifications" />
               <Body>
                 <Text>Liam Kent</Text>
               </Body>
@@ -65,10 +70,13 @@ class Submissions extends React.Component<Props, State> {
                 <Text note>May 31, 2011</Text>
               </Right>
             </CardItem>
-            <CardItem button onPress={() => {
-              this.props.navigation.navigate("SubmissionDetails");
-            }}>
-              <Icon active style={{color: "lightgray"}} name="md-eye" />
+            <CardItem
+              button
+              onPress={() => {
+                this.props.navigation.navigate("SubmissionDetails");
+              }}
+            >
+              <Icon active style={{ color: "lightgray" }} name="md-eye" />
               <Body>
                 <Text>Larry David</Text>
               </Body>
@@ -76,39 +84,33 @@ class Submissions extends React.Component<Props, State> {
                 <Text note>April 4, 2011</Text>
               </Right>
             </CardItem>
-            <CardItem button onPress={() => {
-              this.props.navigation.navigate("SubmissionDetails");
-            }}>
-              <Icon active style={{color: "lightgray"}} name="md-eye" />
-              <Body>
-                <Text>Mitchell Pine</Text>
-              </Body>
-              <Right>
-                <Text note>June 5, 2010</Text>
-              </Right>
-            </CardItem>
-            <CardItem button onPress={() => {
-              this.props.navigation.navigate("SubmissionDetails");
-            }}>
-              <Icon active style={{color: "lightgray"}} name="md-eye" />
-              <Body>
-                <Text>Susie Green</Text>
-              </Body>
-              <Right>
-                <Text note>August 14, 2009</Text>
-              </Right>
-            </CardItem>
-            <CardItem button onPress={() => {
-              this.props.navigation.navigate("SubmissionDetails");
-            }}>
-              <Icon active style={{color: "lightgray"}} name="md-eye" />
-              <Body>
-                <Text>Ted Beneke</Text>
-              </Body>
-              <Right>
-                <Text note>January 23, 2009</Text>
-              </Right>
-            </CardItem>
+
+            {this.props.submissionList.map((item, i) => (
+              <CardItem
+                key={i}
+                onPress={() =>
+                  this.props.navigation.navigate("SubmissionDetails", {
+                    submission: { item }
+                  })
+                }
+              >
+                {item.hasSeen ? (
+                  <Icon style={{ color: "lightgray" }} name="md-eye" />
+                ) : (
+                  <Icon style={{ color: "red" }} name="md-notifications" />
+                )}
+
+                <Body>
+                  <Text>{item.userId}</Text>
+                </Body>
+                <Right>
+                  <Text note>
+                    {/* Remove last bits of date from new Date() */}
+                    {new Date(item.submissionDate).toString().slice(0, -23)}
+                  </Text>
+                </Right>
+              </CardItem>
+            ))}
           </Card>
         </Content>
       </Container>
