@@ -10,11 +10,16 @@ import {
   Left,
   Body,
   Right,
-  H3,
   Card,
   CardItem,
   Text,
-  View
+  View,
+  Item,
+  Input,
+  Form,
+  Picker,
+  CheckBox,
+  ListItem
 } from "native-base";
 
 import styles from "./styles";
@@ -25,7 +30,7 @@ export interface Props {
 
 const resetAction = NavigationActions.reset({
   index: 0,
-  actions: [NavigationActions.navigate({ routeName: "Drawer" })]
+  actions: [NavigationActions.navigate({ routeName: "Additional" })]
 });
 
 export interface State {}
@@ -39,7 +44,7 @@ class PatientDetails extends React.Component<Props, State> {
               transparent
               onPress={() => this.props.navigation.dispatch(resetAction)}
             >
-              <Icon name="md-close" />
+              <Icon name="arrow-back" />
             </Button>
           </Left>
 
@@ -49,8 +54,32 @@ class PatientDetails extends React.Component<Props, State> {
         </Header>
 
         <Content padder>
-          <Text>Test</Text>
-          <View style={{ marginBottom: 100 }} />
+          <Card>
+            <CardItem style={{marginBottom: -20}}header>
+              <Text>How old are you?</Text>
+            </CardItem>
+            <CardItem>
+              <Item regular>
+                <Input keyboardType = "numeric" placeholder="Enter your age..." />
+              </Item>
+            </CardItem>
+            <CardItem style={{marginBottom: -20}}header>
+              <Text>What is your sex?</Text>
+            </CardItem>
+            <CardItem>
+              <Item regular>
+                <Text>Options coming soon</Text>
+              </Item>
+            </CardItem>
+            <CardItem style={{marginBottom: -20}}header>
+              <Text>What number can we reach you at?</Text>
+            </CardItem>
+            <CardItem>
+              <Item regular>
+                <Input keyboardType = "phone-pad" placeholder="Enter your number..." />
+              </Item>
+            </CardItem>
+          </Card>
         </Content>
 
         {/* Survey Navigation */}
@@ -64,12 +93,12 @@ class PatientDetails extends React.Component<Props, State> {
               Previous
             </Text>
           </Button>
-          <Button transparent onPress={() => this.props.navigation.navigate("PatientDetails") }>
+          <Button transparent onPress={() => this.props.navigation.navigate("Drawer")}>
             <Text style={{ color: "white", paddingRight: 0, fontSize: 20 }}>
-              Next
+              Submit
             </Text>
             <Icon
-              name="arrow-forward"
+              name="md-checkmark"
               style={{ color: "white", marginLeft: 10, fontSize: 45 }}
             />
           </Button>
