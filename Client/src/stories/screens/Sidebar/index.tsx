@@ -10,10 +10,10 @@ import {
   Body,
   FooterTab,
   H2,
-  H3,
   CardItem,
   Left,
-  Thumbnail
+  Thumbnail,
+  Separator
 } from "native-base";
 
 import { Auth } from "aws-amplify";
@@ -50,9 +50,9 @@ export default class Sidebar extends React.Component<Props, State> {
         </Button>
 
         <List style={{ marginTop: 0 }}>
-          <ListItem>
-            <H3>Patient</H3>
-          </ListItem>
+          <Separator bordered>
+            <Text>PATIENT</Text>
+          </Separator>
 
           <ListItem
             button
@@ -71,9 +71,10 @@ export default class Sidebar extends React.Component<Props, State> {
           >
             <Text>Calendar</Text>
           </ListItem>
-          <ListItem>
-            <H3>Dentist</H3>
-          </ListItem>
+
+          <Separator bordered>
+            <Text>DENTIST</Text>
+          </Separator>
 
           <ListItem
             button
