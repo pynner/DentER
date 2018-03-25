@@ -35,19 +35,21 @@
     "watch": "npm run build -- -w",
     "ios": "react-native run-ios",
     "android": "node node_modules/react-native/local-cli/cli.js run-android",
-    "uninstall":
-      "xcrun simctl uninstall 9AF85DA8-5426-4169-AD4F-8E4BE7F345D2 com.pynner.app.ReactNativeSeed",
+    "uninstall": "xcrun simctl uninstall 9AF85DA8-5426-4169-AD4F-8E4BE7F345D2 com.pynner.app.ReactNativeSeed",
     "tsc": "tsc",
     "clean": "rimraf artifacts",
     "build": "npm run clean && npm run tsc --",
     "lint": "tslint src/**/*.ts",
     "test": "yarn jest && tslint src/**/*.tsx && eslint .",
-    "precommit": "yarn lint",
-    "postinstall": "bash scripts/postinstall.sh"
+    "precommit": "yarn lint"
   },
   "jest": {
     "preset": "jest-expo",
-    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
     "transform": {
       "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
@@ -67,6 +69,7 @@
     "react": "16.2.0",
     "react-native": "0.51.0",
     "react-native-calendars": "^1.17.2",
+    "react-native-communications": "^2.2.1",
     "react-navigation": "1.0.0-beta.21"
   }
 }

@@ -12,9 +12,13 @@ import {
   Card,
   CardItem,
   Text,
-  Separator, H3
+  Separator,
+  H3, H2,
+  Footer,
+  FooterTab
 } from "native-base";
 import { NavigationActions } from "react-navigation";
+import Communications from "react-native-communications";
 
 import styles from "./styles";
 export interface Props {
@@ -25,6 +29,7 @@ const resetAction = NavigationActions.reset({
   index: 0,
   actions: [NavigationActions.navigate({ routeName: "Drawer" })]
 });
+
 export interface State {}
 class SubmissionDetails extends React.Component<Props, State> {
   render() {
@@ -54,33 +59,6 @@ class SubmissionDetails extends React.Component<Props, State> {
         <Card>
           <CardItem header>
             <H3>Susie Green</H3>
-          </CardItem>
-          <Separator bordered>
-            <Text>PATIENT INFORMATION</Text>
-          </Separator>
-          <CardItem>
-            <Body>
-              <Text>Age</Text>
-            </Body>
-            <Right>
-              <Text note>37</Text>
-            </Right>
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Text>Sex</Text>
-            </Body>
-            <Right>
-              <Text note>Female</Text>
-            </Right>
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Text>Phone number</Text>
-            </Body>
-            <Right>
-              <Text note>+1 (709) 435 7433</Text>
-            </Right>
           </CardItem>
           <Separator bordered>
             <Text>PAIN DESCRIPTION</Text>
@@ -139,8 +117,51 @@ class SubmissionDetails extends React.Component<Props, State> {
                 starting to feel the effects of hunger, and I worry for their lives.
               </Text>
           </CardItem>
+          <Separator bordered>
+            <Text>PATIENT INFORMATION</Text>
+          </Separator>
+          <CardItem>
+            <Body>
+              <Text>Age</Text>
+            </Body>
+            <Right>
+              <Text note>37</Text>
+            </Right>
+          </CardItem>
+          <CardItem>
+            <Body>
+              <Text>Sex</Text>
+            </Body>
+            <Right>
+              <Text note>Female</Text>
+            </Right>
+          </CardItem>
+          <CardItem>
+            <Body>
+              <Text>Phone number</Text>
+            </Body>
+            <Right>
+              <Text note>+1 (709) 435 7433</Text>
+            </Right>
+          </CardItem>
         </Card>
         </Content>
+        <Footer>
+        <FooterTab>
+          <Button
+            full
+            success
+            onPress={() => {
+              // make a phone call (placeholder # for now)
+              Communications.phonecall("1 234 5678", false);
+            }}
+          >
+            <H2 style={{ color: "white", fontWeight: "normal" }}>
+              Call Susie
+            </H2>
+          </Button>
+        </FooterTab>
+      </Footer>
       </Container>
     );
   }
