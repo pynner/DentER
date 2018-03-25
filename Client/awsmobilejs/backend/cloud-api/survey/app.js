@@ -267,12 +267,12 @@ app.get("/survey/allObj/:submissionId", function(req, res) {
 app.get("/survey/dentist/:submissionId", function(req, res) {
   const payload = {
     TableName: tableName,
-    KeyConditionExpression: "#dent = :name",
+    FilterExpression: "#dent = :name",
     ExpressionAttributeNames: {
       "#dent": "dentist"
     },
     ExpressionAttributeValues: {
-      ":name": "Dr.Tester"
+      ":name": req.params[partitionKeyName]
     },
     Select: "ALL_ATTRIBUTES"
   };

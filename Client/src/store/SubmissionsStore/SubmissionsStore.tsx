@@ -7,7 +7,7 @@ class SubmissionsStore {
   async getAllSubmissions() {
     // const path = "/survey/pynner1521863441110";
     // const path = "/survey/allObj/test";
-    const path = "/survey/dentist/test";
+    const path = "/survey/dentist/Dr.Lameo";
     const myInit = {
       headers: {}
     };
