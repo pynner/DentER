@@ -9,9 +9,9 @@ import {
   Right,
   Body,
   Content,
-  Card, CardItem,
-  Text,
-  Separator
+  Card,
+  CardItem,
+  Text
 } from "native-base";
 import { NavigationActions } from "react-navigation";
 
@@ -25,7 +25,7 @@ const resetAction = NavigationActions.reset({
   actions: [NavigationActions.navigate({ routeName: "Drawer" })]
 });
 export interface State {}
-class Submissions extends React.Component<Props, State> {
+class SubmissionDetails extends React.Component<Props, State> {
   render() {
     return (
       <Container style={styles.container}>
@@ -61,4 +61,4 @@ class Submissions extends React.Component<Props, State> {
   }
 }
 
-export default Submissions;
+export default SubmissionDetails;

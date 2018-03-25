@@ -2,7 +2,7 @@ import * as React from "react";
 import { observer, inject } from "mobx-react/native";
 import { View } from "native-base";
 import styles from "./styles";
-import SubmissionDetailsContainer from "../../stories/screens/SubmissionDetails";
+import SubmissionDetails from "../../stories/screens/SubmissionDetails";
 
 export interface Props {
   navigation: any;
@@ -26,7 +26,7 @@ export default class SubmissionDetailsContainer extends React.Component<
     const survey = this.props.submissionsStore;
     const style = <View style={styles.horizontalLine} />;
     return (
-      <Submission // @ Mitchell
+      <SubmissionDetails
         navigation={this.props.navigation}
         onRefresh={() => this.refresh()}
       />
