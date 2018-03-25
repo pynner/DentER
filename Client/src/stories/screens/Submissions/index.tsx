@@ -50,55 +50,53 @@ class Submissions extends React.Component<Props, State> {
           </Right>
         </Header>
         <Content padder>
-        <Card>
-            <Separator bordered>
-              <Text>URGENT</Text>
-            </Separator>
-            <CardItem>
-              <Icon active name="person" />
-              <Text style={{color: "red"}}>Susie Green</Text>
-              <Right>
-                <Icon name="eye" />
-              </Right>
-            </CardItem>
-            <CardItem>
-              <Icon active name="person" />
-              <Text style={{color: "red"}}>Richard Louis</Text>
-            </CardItem>
-          </Card>
           <Card>
             <Separator bordered>
               <Text>PATIENT SUBMISSIONS</Text>
             </Separator>
             <CardItem>
-              <Icon active name="person" />
-              <Text>Mitchell Pynn</Text>
+              <Icon style={{color: "red"}}name="md-notifications" />
+              <Body>
+                <Text>Liam Kent</Text>
+              </Body>
               <Right>
-                <Icon style={{color: "red"}}name="md-notifications" />
+                <Text note>May 31, 2011</Text>
               </Right>
             </CardItem>
             <CardItem>
-              <Icon active name="person" />
-              <Text>Robert Scott</Text>
-            </CardItem>
-            <CardItem>
-              <Icon active name="people" />
-              <Text>Larry David</Text>
+              <Icon active style={{color: "lightgray"}} name="md-eye" />
+              <Body>
+                <Text>Larry David</Text>
+              </Body>
               <Right>
-                <Icon name="md-notifications" />
+                <Text note>April 4, 2011</Text>
               </Right>
             </CardItem>
             <CardItem>
-              <Icon active name="person" />
-              <Text>Liam Kent</Text>
+              <Icon active style={{color: "lightgray"}} name="md-eye" />
+              <Body>
+                <Text>Mitchell Pine</Text>
+              </Body>
               <Right>
-                <Icon name="md-notifications" />
+                <Text note>June 5, 2010</Text>
               </Right>
             </CardItem>
             <CardItem>
-              <Icon active name="person" />
-              <Text>Drew Sharp</Text>
+              <Icon active style={{color: "lightgray"}} name="md-eye" />
+              <Body>
+                <Text>Susie Green</Text>
+              </Body>
               <Right>
+                <Text note>August 14, 2009</Text>
+              </Right>
+            </CardItem>
+            <CardItem>
+              <Icon active style={{color: "lightgray"}} name="md-eye" />
+              <Body>
+                <Text>Ted Beneke</Text>
+              </Body>
+              <Right>
+                <Text note>January 23, 2009</Text>
               </Right>
             </CardItem>
           </Card>
