@@ -260,6 +260,36 @@ app.get("/survey/allObj/:submissionId", function(req, res) {
   });
 });
 
+/**************************************
+ * HTTP get method to get dentist objects *
+ ***************************************/
+
+app.get("/survey/dentist/:submissionId", function(req, res) {
+  const payload = {
+    TableName: tableName,
+    KeyConditionExpression: "#dent = :name",
+    ExpressionAttributeNames: {
+      "#dent": "dentist"
+    },
+    ExpressionAttributeValues: {
+      ":name": "Dr.Tester"
+    },
+    Select: "ALL_ATTRIBUTES"
+  };
+
+  dynamodb.scan(payload, (err, data) => {
+    if (err) {
+      res.json({ error: "Could not load items: " + err.message });
+    }
+
+    res.json({
+      data: data.Items.map(item => {
+        return item;
+      })
+    });
+  });
+});
+
 app.listen(3000, function() {
   console.log("App started");
 });
