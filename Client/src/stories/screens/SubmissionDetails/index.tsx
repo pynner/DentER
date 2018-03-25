@@ -13,7 +13,7 @@ import {
   CardItem,
   Text,
   Separator,
-  H3, 
+  H3,
   H2,
   Footer,
   FooterTab
@@ -33,6 +33,36 @@ const resetAction = NavigationActions.reset({
 
 export interface State {}
 class SubmissionDetails extends React.Component<Props, State> {
+  getPain(val) {
+    switch (val) {
+      case 0:
+        return "Teeth";
+      case 1:
+        return "Gums";
+      case 2:
+        return "Jaw";
+      case 3:
+        return "Head";
+      default:
+        return "Unknown";
+    }
+  }
+
+  getDuration(val) {
+    switch (val) {
+      case 0:
+        return "Today";
+      case 1:
+        return "A few days";
+      case 2:
+        return "One week";
+      case 3:
+        return "Longer than one week";
+      default:
+        return "Unknown";
+    }
+  }
+
   render() {
     const param = this.props.navigation.state.params;
     return (
@@ -52,7 +82,7 @@ class SubmissionDetails extends React.Component<Props, State> {
           </Body>
 
           <Right>
-            <Button transparent onPress={() => this.props.onRefresh()}>
+            <Button transparent onPress={() => console.log(param.data.item)}>
               <Icon name="md-refresh" />
             </Button>
           </Right>
@@ -60,7 +90,7 @@ class SubmissionDetails extends React.Component<Props, State> {
         <Content padder>
           <Card>
             <CardItem header>
-              <H3>Susie Green</H3>
+              <H3>{param.data.item.name}</H3>
             </CardItem>
             <Separator bordered>
               <Text>PAIN DESCRIPTION</Text>
@@ -70,7 +100,9 @@ class SubmissionDetails extends React.Component<Props, State> {
                 <Text>Where?</Text>
               </Body>
               <Right>
-                <Text note>Gums</Text>
+                <Text note>
+                  {this.getPain(param.data.item.multipleChoiceAnswers[0])}
+                </Text>
               </Right>
             </CardItem>
             <CardItem>
@@ -78,7 +110,9 @@ class SubmissionDetails extends React.Component<Props, State> {
                 <Text>How long?</Text>
               </Body>
               <Right>
-                <Text note>A few days</Text>
+                <Text note>
+                  {this.getDuration(param.data.item.multipleChoiceAnswers[1])}
+                </Text>
               </Right>
             </CardItem>
             <Separator bordered>
@@ -89,7 +123,9 @@ class SubmissionDetails extends React.Component<Props, State> {
                 <Text>Bleeding</Text>
               </Body>
               <Right>
-                <Text note>Yes</Text>
+                <Text note>
+                  {param.data.item.multipleChoiceAnswers[1][0] ? "Yes" : "No"}
+                </Text>
               </Right>
             </CardItem>
             <CardItem>
@@ -97,7 +133,9 @@ class SubmissionDetails extends React.Component<Props, State> {
                 <Text>Hard Lumps</Text>
               </Body>
               <Right>
-                <Text note>No</Text>
+                <Text note>
+                  {param.data.item.multipleChoiceAnswers[1][1] ? "Yes" : "No"}
+                </Text>
               </Right>
             </CardItem>
             <CardItem>
@@ -105,65 +143,62 @@ class SubmissionDetails extends React.Component<Props, State> {
                 <Text>Soft Lumps</Text>
               </Body>
               <Right>
-                <Text note>No</Text>
+                <Text note>
+                  {param.data.item.multipleChoiceAnswers[1][2] ? "Yes" : "No"}
+                </Text>
               </Right>
             </CardItem>
             <Separator bordered>
               <Text>ADDITIONAL COMMENTS</Text>
             </Separator>
             <CardItem>
-              <Text style={{ color: "gray" }}>
-                The pain is so bad I cannot eat. I am bedridden, and my children
-                are going hungry because they are too young to feed themselves.
-                My many cats are also starting to feel the effects of hunger,
-                and I worry for their lives.
-              </Text>
-          </CardItem>
-          <Separator bordered>
-            <Text>PATIENT INFORMATION</Text>
-          </Separator>
-          <CardItem>
-            <Body>
-              <Text>Age</Text>
-            </Body>
-            <Right>
-              <Text note>37</Text>
-            </Right>
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Text>Sex</Text>
-            </Body>
-            <Right>
-              <Text note>Female</Text>
-            </Right>
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Text>Phone number</Text>
-            </Body>
-            <Right>
-              <Text note>+1 (709) 435 7433</Text>
-            </Right>
-          </CardItem>
-        </Card>
+              <Text style={{ color: "gray" }}>{param.data.item.addInfo}</Text>
+            </CardItem>
+            <Separator bordered>
+              <Text>PATIENT INFORMATION</Text>
+            </Separator>
+            <CardItem>
+              <Body>
+                <Text>Age</Text>
+              </Body>
+              <Right>
+                <Text note>{param.data.item.age}</Text>
+              </Right>
+            </CardItem>
+            <CardItem>
+              <Body>
+                <Text>Sex</Text>
+              </Body>
+              <Right>
+                <Text note>{param.data.item.sex}</Text>
+              </Right>
+            </CardItem>
+            <CardItem>
+              <Body>
+                <Text>Phone number</Text>
+              </Body>
+              <Right>
+                <Text note>{param.data.item.phone}</Text>
+              </Right>
+            </CardItem>
+          </Card>
         </Content>
         <Footer>
-        <FooterTab>
-          <Button
-            full
-            success
-            onPress={() => {
-              // make a phone call (placeholder # for now)
-              Communications.phonecall("1 234 5678", false);
-            }}
-          >
-            <H2 style={{ color: "white", fontWeight: "normal" }}>
-              Call Susie
-            </H2>
-          </Button>
-        </FooterTab>
-      </Footer>
+          <FooterTab>
+            <Button
+              full
+              success
+              onPress={() => {
+                // make a phone call (placeholder # for now)
+                Communications.phonecall(param.data.item.phone, false);
+              }}
+            >
+              <H2 style={{ color: "white", fontWeight: "normal" }}>
+                {"Call " + param.data.item.name}
+              </H2>
+            </Button>
+          </FooterTab>
+        </Footer>
       </Container>
     );
   }
