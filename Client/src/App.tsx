@@ -14,6 +14,7 @@ import TwoFactor from "./container/TwoFactorContainer";
 import Calender from "./container/CalenderContainer";
 import Submissions from "./container/SubmissionsContainer";
 import SubmissionDetails from "./container/SubmissionDetailsContainer";
+import PatientDetails from "./container/PatientDetailsContainer";
 
 import Amplify from "aws-amplify";
 import awsmobile from "../awsmobilejs/#current-backend-info/aws-exports";
@@ -41,7 +42,8 @@ const App = StackNavigator(
     TwoFactor: { screen: TwoFactor },
     Calender: { screen: Calender },
     Submissions: { screen: Submissions },
-    SubmissionDetails: { screen: SubmissionDetails }
+    SubmissionDetails: { screen: SubmissionDetails },
+    PatientDetails: { screen: PatientDetails }
   },
   {
     initialRouteName: "Drawer",
