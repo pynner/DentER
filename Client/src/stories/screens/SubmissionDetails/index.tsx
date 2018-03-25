@@ -56,6 +56,33 @@ class SubmissionDetails extends React.Component<Props, State> {
             <H3>Susie Green</H3>
           </CardItem>
           <Separator bordered>
+            <Text>PATIENT INFORMATION</Text>
+          </Separator>
+          <CardItem>
+            <Body>
+              <Text>Age</Text>
+            </Body>
+            <Right>
+              <Text note>37</Text>
+            </Right>
+          </CardItem>
+          <CardItem>
+            <Body>
+              <Text>Sex</Text>
+            </Body>
+            <Right>
+              <Text note>Female</Text>
+            </Right>
+          </CardItem>
+          <CardItem>
+            <Body>
+              <Text>Phone number</Text>
+            </Body>
+            <Right>
+              <Text note>+1 (709) 435 7433</Text>
+            </Right>
+          </CardItem>
+          <Separator bordered>
             <Text>PAIN DESCRIPTION</Text>
           </Separator>
           <CardItem>
