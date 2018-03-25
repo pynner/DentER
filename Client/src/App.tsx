@@ -53,4 +53,5 @@ const app = () => (
   </Root>
 );
 
-export default withAuthenticator(app);
+// export default withAuthenticator(app);
+export default app;

@@ -7,7 +7,11 @@ import {
   Icon,
   Left,
   Right,
-  Body
+  Body,
+  Content,
+  Card, CardItem,
+  Text,
+  Separator
 } from "native-base";
 import { NavigationActions } from "react-navigation";
 
@@ -31,7 +35,7 @@ class Submissions extends React.Component<Props, State> {
               transparent
               onPress={() => this.props.navigation.dispatch(resetAction)}
             >
-              <Icon name="ios-close" />
+              <Icon name="md-close" />
             </Button>
           </Left>
 
@@ -41,10 +45,64 @@ class Submissions extends React.Component<Props, State> {
 
           <Right>
             <Button transparent onPress={() => this.props.onRefresh()}>
-              <Icon name="ios-refresh" />
+              <Icon name="md-refresh" />
             </Button>
           </Right>
         </Header>
+        <Content padder>
+        <Card>
+            <Separator bordered>
+              <Text>URGENT</Text>
+            </Separator>
+            <CardItem>
+              <Icon active name="person" />
+              <Text style={{color: "red"}}>Susie Green</Text>
+              <Right>
+                <Icon name="eye" />
+              </Right>
+            </CardItem>
+            <CardItem>
+              <Icon active name="person" />
+              <Text style={{color: "red"}}>Richard Louis</Text>
+            </CardItem>
+          </Card>
+          <Card>
+            <Separator bordered>
+              <Text>PATIENT SUBMISSIONS</Text>
+            </Separator>
+            <CardItem>
+              <Icon active name="person" />
+              <Text>Mitchell Pynn</Text>
+              <Right>
+                <Icon style={{color: "red"}}name="md-notifications" />
+              </Right>
+            </CardItem>
+            <CardItem>
+              <Icon active name="person" />
+              <Text>Robert Scott</Text>
+            </CardItem>
+            <CardItem>
+              <Icon active name="people" />
+              <Text>Larry David</Text>
+              <Right>
+                <Icon name="md-notifications" />
+              </Right>
+            </CardItem>
+            <CardItem>
+              <Icon active name="person" />
+              <Text>Liam Kent</Text>
+              <Right>
+                <Icon name="md-notifications" />
+              </Right>
+            </CardItem>
+            <CardItem>
+              <Icon active name="person" />
+              <Text>Drew Sharp</Text>
+              <Right>
+              </Right>
+            </CardItem>
+          </Card>
+        </Content>
       </Container>
     );
   }
