@@ -28,7 +28,7 @@ export interface Props {
 }
 const resetAction = NavigationActions.reset({
   index: 0,
-  actions: [NavigationActions.navigate({ routeName: "Drawer" })]
+  actions: [NavigationActions.navigate({ routeName: "Submissions" })]
 });
 
 export interface State {}
@@ -73,7 +73,7 @@ class SubmissionDetails extends React.Component<Props, State> {
               transparent
               onPress={() => this.props.navigation.dispatch(resetAction)}
             >
-              <Icon name="md-close" />
+              <Icon name="arrow-back" />
             </Button>
           </Left>
 

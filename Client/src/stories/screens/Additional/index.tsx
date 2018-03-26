@@ -61,12 +61,12 @@ class Additional extends React.Component<Props, State> {
               transparent
               onPress={() => this.props.navigation.dispatch(resetAction)}
             >
-              <Icon name="md-close" />
+              <Icon name="arrow-back" />
             </Button>
           </Left>
 
           <Body style={{ flex: 3 }}>
-            <Title>New Submission Request</Title>
+            <Title>Additional Information</Title>
           </Body>
 
           <Right>
@@ -93,9 +93,9 @@ class Additional extends React.Component<Props, State> {
               Previous
             </Text>
           </Button>
-          <Button transparent onPress={() => this.confirmSubmit()}>
+          <Button transparent onPress={() => this.props.navigation.navigate("PatientDetails") }>
             <Text style={{ color: "white", paddingRight: 0, fontSize: 20 }}>
-              Submit
+              Next
             </Text>
             <Icon
               name="arrow-forward"

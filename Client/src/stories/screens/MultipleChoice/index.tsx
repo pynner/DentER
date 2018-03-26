@@ -35,7 +35,7 @@ class MultipleChoice extends React.Component<Props, State> {
               transparent
               onPress={() => this.props.navigation.dispatch(resetAction)}
             >
-              <Icon name="md-close" />
+              <Icon name="arrow-back" />
             </Button>
           </Left>
 
