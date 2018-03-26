@@ -1,7 +1,5 @@
 import * as React from "react";
 import { observer, inject } from "mobx-react/native";
-import { View } from "native-base";
-import styles from "./styles";
 import SubmissionDetails from "../../stories/screens/SubmissionDetails";
 
 export interface Props {
@@ -23,8 +21,6 @@ export default class SubmissionDetailsContainer extends React.Component<
   }
 
   render() {
-    const survey = this.props.submissionsStore;
-    const style = <View style={styles.horizontalLine} />;
     return (
       <SubmissionDetails
         navigation={this.props.navigation}

@@ -13,10 +13,7 @@ import {
   CardItem,
   Text,
   Separator,
-  H3,
-  H2,
-  Footer,
-  FooterTab
+  H3
 } from "native-base";
 import { NavigationActions } from "react-navigation";
 import Communications from "react-native-communications";
@@ -124,14 +121,17 @@ class SubmissionDetails extends React.Component<Props, State> {
                 <Button
                   full
                   success
-                  onPress={() => // make a phone call (placeholder # for now)
-                      Communications.phonecall(param.data.item.phone, false)
+                  onPress={() =>
+                    // make a phone call (placeholder # for now)
+                    Communications.phonecall(param.data.item.phone, false)
                   }
                 >
                   <Text>Call</Text>
                 </Button>
               </Body>
-            <Right><Text>{param.data.item.phone}</Text></Right>
+              <Right>
+                <Text>{param.data.item.phone}</Text>
+              </Right>
             </CardItem>
             <Separator bordered>
               <Text>PAIN DESCRIPTION</Text>
@@ -193,46 +193,38 @@ class SubmissionDetails extends React.Component<Props, State> {
               <Text>ADDITIONAL COMMENTS</Text>
             </Separator>
             <CardItem>
-              <Text style={{ color: "gray" }}>
-                The pain is so bad I cannot eat. I am bedridden, and my children
-                are going hungry because they are too young to feed themselves.
-                My many cats are also starting to feel the effects of hunger,
-                and I worry for their lives.
-              </Text>
-          </CardItem>
-          <Separator bordered>
-            <Text>PATIENT INFORMATION</Text>
-          </Separator>
-          <CardItem>
-            <Body>
-              <Text>Age</Text>
-            </Body>
-            <Right>
-              <Text note>37</Text>
-            </Right>
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Text>Sex</Text>
-            </Body>
-            <Right>
-              <Text note>Female</Text>
-            </Right>
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Text>Phone number</Text>
-            </Body>
-            <Right>
-              <Text note>+1 (709) 435 7433</Text>
-            </Right>
-          </CardItem>
-          <CardItem footer>
-
-          </CardItem>
-        </Card>
+              <Text style={{ color: "gray" }}>{param.data.item.addInfo}</Text>
+            </CardItem>
+            <Separator bordered>
+              <Text>PATIENT INFORMATION</Text>
+            </Separator>
+            <CardItem>
+              <Body>
+                <Text>Age</Text>
+              </Body>
+              <Right>
+                <Text note>{param.data.item.age}</Text>
+              </Right>
+            </CardItem>
+            <CardItem>
+              <Body>
+                <Text>Sex</Text>
+              </Body>
+              <Right>
+                <Text note>{param.data.item.sex}</Text>
+              </Right>
+            </CardItem>
+            <CardItem>
+              <Body>
+                <Text>Phone number</Text>
+              </Body>
+              <Right>
+                <Text note>{param.data.item.phone}</Text>
+              </Right>
+            </CardItem>
+            <CardItem footer />
+          </Card>
         </Content>
-
       </Container>
     );
   }

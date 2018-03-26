@@ -5,16 +5,12 @@ import {
   List,
   ListItem,
   Content,
-  Footer,
   Button,
   Body,
-  FooterTab,
-  H2,
   CardItem,
   Left,
   Thumbnail,
   Separator,
-  H3,
   Right
 } from "native-base";
 
@@ -40,29 +36,29 @@ export default class Sidebar extends React.Component<Props, State> {
         </CardItem>
 
         <CardItem>
-        <Body>
-          <Button
-            full
-            success
-            onPress={() => {
-              this.props.navigation.navigate("MultipleChoice");
-            }}
-          >
-            <Text>New request</Text>
-          </Button>
-        </Body>
-        <Right>
-          <Button
-            full
-            onPress={() =>
-              Auth.signOut()
-                .then(data => console.log(data))
-                .catch(err => console.log(err))
-            }
-          >
-            <Text>Sign out</Text>
-          </Button>
-        </Right>
+          <Body>
+            <Button
+              full
+              success
+              onPress={() => {
+                this.props.navigation.navigate("MultipleChoice");
+              }}
+            >
+              <Text>New request</Text>
+            </Button>
+          </Body>
+          <Right>
+            <Button
+              full
+              onPress={() =>
+                Auth.signOut()
+                  .then(data => console.log(data))
+                  .catch(err => console.log(err))
+              }
+            >
+              <Text>Sign out</Text>
+            </Button>
+          </Right>
         </CardItem>
 
         <List style={{ marginTop: 0 }}>

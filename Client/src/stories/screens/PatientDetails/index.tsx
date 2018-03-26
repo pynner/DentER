@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Image } from "react-native";
 import {
   Container,
   Header,
@@ -16,11 +15,7 @@ import {
   View,
   Item,
   Input,
-  Form,
-  Picker,
-  CheckBox,
-  ListItem,
-  List
+  ListItem
 } from "native-base";
 
 import styles from "./styles";
@@ -61,7 +56,7 @@ class PatientDetails extends React.Component<Props, State> {
             </CardItem>
             <CardItem>
               <Item rounded>
-                <Input keyboardType = "numeric" placeholder="Enter your age..." />
+                <Input keyboardType="numeric" placeholder="Enter your age..." />
               </Item>
             </CardItem>
             <CardItem header>
@@ -69,23 +64,30 @@ class PatientDetails extends React.Component<Props, State> {
             </CardItem>
             <ListItem icon>
               <Left>
-                <Icon name="man" style={{color: "blue"}} /><Text>Male</Text>
+                <Icon name="man" style={{ color: "blue" }} />
+                <Text>Male</Text>
               </Left>
-              <Body></Body>
+              <Body />
             </ListItem>
             <ListItem>
               <Left>
-                <Icon name="woman" style={{color: "red"}} /><Text>Female</Text>
+                <Icon name="woman" style={{ color: "red" }} />
+                <Text>Female</Text>
               </Left>
-              <Body></Body>
-              <Right><Icon name="checkmark" /></Right>
+              <Body />
+              <Right>
+                <Icon name="checkmark" />
+              </Right>
             </ListItem>
             <CardItem header>
               <Text>What number can we reach you at?</Text>
             </CardItem>
             <CardItem>
               <Item rounded>
-                <Input keyboardType = "phone-pad" placeholder="Enter your number..." />
+                <Input
+                  keyboardType="phone-pad"
+                  placeholder="Enter your number..."
+                />
               </Item>
             </CardItem>
           </Card>
@@ -102,7 +104,10 @@ class PatientDetails extends React.Component<Props, State> {
               Previous
             </Text>
           </Button>
-          <Button transparent onPress={() => this.props.navigation.navigate("Drawer")}>
+          <Button
+            transparent
+            onPress={() => this.props.navigation.navigate("Drawer")}
+          >
             <Text style={{ color: "white", paddingRight: 0, fontSize: 20 }}>
               Submit
             </Text>

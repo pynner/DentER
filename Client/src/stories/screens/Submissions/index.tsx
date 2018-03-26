@@ -11,8 +11,7 @@ import {
   Content,
   Card,
   CardItem,
-  Text,
-  Separator
+  Text
 } from "native-base";
 import { NavigationActions } from "react-navigation";
 
