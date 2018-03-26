@@ -7,7 +7,12 @@ class SurveyStore {
   @observable isLoading = true;
   @observable questions = [];
   @observable multipleChoiceAnswers = [-1, -1, [false, false, false]];
-  @observable additionalInfo = [""];
+  @observable additionalInfo = [" "];
+  @observable age = "0";
+  @observable phone = "0";
+  @observable sex = "N/A";
+  userName = "";
+  userPhone = "";
 
   @action
   fetchItems(data) {
@@ -36,6 +41,21 @@ class SurveyStore {
   }
 
   @action
+  ageOnChange(val) {
+    this.age = val;
+  }
+
+  @action
+  phoneOnChange(val) {
+    this.phone = val;
+  }
+
+  @action
+  sexTouch(val) {
+    this.sex = val;
+  }
+
+  @action
   clearMultipleChoice() {
     this.multipleChoiceAnswers = [-1, -1, [false, false, false]];
   }
@@ -43,6 +63,24 @@ class SurveyStore {
   @action
   clearAdditional() {
     this.additionalInfo = [""];
+  }
+
+  @action
+  async getAWSdata() {
+    this.userName = await Auth.currentAuthenticatedUser()
+      .then(response => {
+        return response.username;
+      })
+      .catch(error => {
+        console.log("Error getting user:" + error);
+      });
+  }
+
+  @action
+  clearPatient() {
+    this.age = "0";
+    this.phone = "0";
+    this.sex = "N/A";
   }
   // Submit survey to AWS
   @action
@@ -66,9 +104,9 @@ class SurveyStore {
         userId: currentUser,
         submissionId: currentUser + new Date().getTime(),
         name: "Cool",
-        phone: "+18074725151",
-        sex: "M",
-        age: 2
+        phone: this.phone,
+        sex: this.sex,
+        age: Number(this.age)
       }
     };
     const path = "/survey";
@@ -83,6 +121,9 @@ class SurveyStore {
       // Clear store
       this.multipleChoiceAnswers = [-1, -1, [false, false, false]];
       this.additionalInfo = [""];
+      this.age = "0";
+      this.phone = "0";
+      this.sex = "N/A";
     } catch (e) {
       console.log(e);
     }

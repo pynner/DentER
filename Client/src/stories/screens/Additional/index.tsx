@@ -14,8 +14,6 @@ import {
 } from "native-base";
 import { NavigationActions } from "react-navigation";
 
-import { Alert } from "react-native";
-
 import styles from "./styles";
 export interface Props {
   navigation: any;
@@ -29,29 +27,6 @@ const resetAction = NavigationActions.reset({
 });
 export interface State {}
 class Additional extends React.Component<Props, State> {
-  confirmSubmit() {
-    // Actually submit form
-    Alert.alert(
-      "Confirm Submission",
-      "Are you sure you want to submit your dentist submission?",
-      [
-        {
-          text: "Yes",
-          onPress: () => {
-            console.log("Submitted");
-            this.props.submit();
-            this.props.navigation.dispatch(resetAction);
-          }
-        },
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
-        }
-      ],
-      { cancelable: false }
-    );
-  }
   render() {
     return (
       <Container style={styles.container}>
@@ -93,7 +68,10 @@ class Additional extends React.Component<Props, State> {
               Previous
             </Text>
           </Button>
-          <Button transparent onPress={() => this.props.navigation.navigate("PatientDetails") }>
+          <Button
+            transparent
+            onPress={() => this.props.navigation.navigate("PatientDetails")}
+          >
             <Text style={{ color: "white", paddingRight: 0, fontSize: 20 }}>
               Next
             </Text>

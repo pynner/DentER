@@ -16,26 +16,26 @@ features:
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: QSU7ol8c/061RPhyxcY/mgb6wbk2UN62Aksryrpw3Ko=
+            hashcode: Z9kn1cS0aK7fN5Db8hYfNYrKMEDLI96UiZ+S0GIafgI=
             memorySize: '128'
-            modified: '2018-03-25T19:58:48.629+0000'
+            modified: '2018-03-26T00:19:40.663+0000'
             name: calender
             runtime: nodejs6.10
             timeout: '3'
-            version: dt2NVrIWBWGoOhyg3WjFIPzpbkxwuqah
+            version: 92fDMertQ8ojSgvfhZFkdQjOfEbGA1jh
           '/calender/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
             codeFilename: uploads/calender-20180325201859.zip
             description: 'Handler for calls to resource path : /calender/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: QSU7ol8c/061RPhyxcY/mgb6wbk2UN62Aksryrpw3Ko=
+            hashcode: Z9kn1cS0aK7fN5Db8hYfNYrKMEDLI96UiZ+S0GIafgI=
             memorySize: '128'
-            modified: '2018-03-25T19:58:48.629+0000'
+            modified: '2018-03-26T00:19:40.663+0000'
             name: calender
             runtime: nodejs6.10
             timeout: '3'
-            version: zsfcIOyLyASj_yblWehaoo8mWReW2RPl
+            version: h4PksCw.YkBnhvrJsuHAL6ATSBsPHcWF
       surveyCRUD: !com.amazonaws.mobilehub.v0.API 
         attributes:
           name: surveyCRUD
@@ -48,26 +48,26 @@ features:
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: OY2f7DskIAGEsvuwA8SWDMapTEkMGRydiJIYTYImcJE=
+            hashcode: etA9K4Re4DUbI8L4d42A4psEBzU2HHYbOZTzSSB0rMc=
             memorySize: '128'
-            modified: '2018-03-25T19:58:49.788+0000'
+            modified: '2018-03-26T00:19:40.457+0000'
             name: survey
             runtime: nodejs6.10
             timeout: '3'
-            version: Ac3aO0Vw8pjspa753Z5VPbUma5mljx3L
+            version: xfqvFBIIMH.dlmGMbqRgoOgPLPuyEEXx
           '/survey/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
             codeFilename: uploads/survey-20180325201859.zip
             description: 'Handler for calls to resource path : /survey/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: OY2f7DskIAGEsvuwA8SWDMapTEkMGRydiJIYTYImcJE=
+            hashcode: etA9K4Re4DUbI8L4d42A4psEBzU2HHYbOZTzSSB0rMc=
             memorySize: '128'
-            modified: '2018-03-25T19:58:49.788+0000'
+            modified: '2018-03-26T00:19:40.457+0000'
             name: survey
             runtime: nodejs6.10
             timeout: '3'
-            version: iRrwB2kcvkHdaBBI3b4vq4f9BeHt1mso
+            version: U1sQByivyJUeicbvD_APcrDqzJRihq8.
   database: !com.amazonaws.mobilehub.v0.Database 
     components:
       database-nosql: !com.amazonaws.mobilehub.v0.NoSQLDatabase 

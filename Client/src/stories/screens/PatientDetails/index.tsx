@@ -8,20 +8,19 @@ import {
   Icon,
   Left,
   Body,
-  Right,
-  Card,
-  CardItem,
   Text,
   View,
-  Item,
-  Input,
-  ListItem
+  Right
 } from "native-base";
 
 import styles from "./styles";
 import { NavigationActions } from "react-navigation";
+import { Alert } from "react-native";
 export interface Props {
   navigation: any;
+  content: any;
+  submit: Function;
+  reset: Function;
 }
 
 const resetAction = NavigationActions.reset({
@@ -31,6 +30,30 @@ const resetAction = NavigationActions.reset({
 
 export interface State {}
 class PatientDetails extends React.Component<Props, State> {
+  confirmSubmit() {
+    // Actually submit form
+    Alert.alert(
+      "Confirm Submission",
+      "Are you sure you want to submit your dentist submission?",
+      [
+        {
+          text: "Yes",
+          onPress: () => {
+            console.log("Submitted");
+            this.props.submit();
+            this.props.navigation.dispatch(resetAction);
+          }
+        },
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        }
+      ],
+      { cancelable: false }
+    );
+  }
+
   render() {
     return (
       <Container style={styles.container}>
@@ -47,51 +70,15 @@ class PatientDetails extends React.Component<Props, State> {
           <Body style={{ flex: 3 }}>
             <Title>Personal Information</Title>
           </Body>
+
+          <Right>
+            <Button transparent onPress={() => this.props.reset()}>
+              <Icon name="md-refresh" />
+            </Button>
+          </Right>
         </Header>
 
-        <Content padder>
-          <Card>
-            <CardItem header>
-              <Text>How old are you?</Text>
-            </CardItem>
-            <CardItem>
-              <Item rounded>
-                <Input keyboardType="numeric" placeholder="Enter your age..." />
-              </Item>
-            </CardItem>
-            <CardItem header>
-              <Text>What is your sex?</Text>
-            </CardItem>
-            <ListItem icon>
-              <Left>
-                <Icon name="man" style={{ color: "blue" }} />
-                <Text>Male</Text>
-              </Left>
-              <Body />
-            </ListItem>
-            <ListItem>
-              <Left>
-                <Icon name="woman" style={{ color: "red" }} />
-                <Text>Female</Text>
-              </Left>
-              <Body />
-              <Right>
-                <Icon name="checkmark" />
-              </Right>
-            </ListItem>
-            <CardItem header>
-              <Text>What number can we reach you at?</Text>
-            </CardItem>
-            <CardItem>
-              <Item rounded>
-                <Input
-                  keyboardType="phone-pad"
-                  placeholder="Enter your number..."
-                />
-              </Item>
-            </CardItem>
-          </Card>
-        </Content>
+        <Content padder>{this.props.content}</Content>
 
         {/* Survey Navigation */}
         <View style={styles.navigation}>
@@ -104,10 +91,7 @@ class PatientDetails extends React.Component<Props, State> {
               Previous
             </Text>
           </Button>
-          <Button
-            transparent
-            onPress={() => this.props.navigation.navigate("Drawer")}
-          >
+          <Button transparent onPress={() => this.confirmSubmit()}>
             <Text style={{ color: "white", paddingRight: 0, fontSize: 20 }}>
               Submit
             </Text>
