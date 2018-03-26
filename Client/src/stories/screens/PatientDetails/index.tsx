@@ -19,7 +19,8 @@ import {
   Form,
   Picker,
   CheckBox,
-  ListItem
+  ListItem,
+  List
 } from "native-base";
 
 import styles from "./styles";
@@ -55,27 +56,35 @@ class PatientDetails extends React.Component<Props, State> {
 
         <Content padder>
           <Card>
-            <CardItem style={{marginBottom: -20}}header>
+            <CardItem header>
               <Text>How old are you?</Text>
             </CardItem>
             <CardItem>
-              <Item regular>
+              <Item rounded>
                 <Input keyboardType = "numeric" placeholder="Enter your age..." />
               </Item>
             </CardItem>
-            <CardItem style={{marginBottom: -20}}header>
+            <CardItem header>
               <Text>What is your sex?</Text>
             </CardItem>
-            <CardItem>
-              <Item regular>
-                <Text>Options coming soon</Text>
-              </Item>
-            </CardItem>
-            <CardItem style={{marginBottom: -20}}header>
+            <ListItem icon>
+              <Left>
+                <Icon name="man" style={{color: "blue"}} /><Text>Male</Text>
+              </Left>
+              <Body></Body>
+            </ListItem>
+            <ListItem>
+              <Left>
+                <Icon name="woman" style={{color: "red"}} /><Text>Female</Text>
+              </Left>
+              <Body></Body>
+              <Right><Icon name="checkmark" /></Right>
+            </ListItem>
+            <CardItem header>
               <Text>What number can we reach you at?</Text>
             </CardItem>
             <CardItem>
-              <Item regular>
+              <Item rounded>
                 <Input keyboardType = "phone-pad" placeholder="Enter your number..." />
               </Item>
             </CardItem>
