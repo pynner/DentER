@@ -62,6 +62,20 @@ class SubmissionDetails extends React.Component<Props, State> {
             <CardItem header>
               <H3>Susie Green</H3>
             </CardItem>
+            <CardItem>
+              <Body>
+                <Button
+                  full
+                  success
+                  onPress={() => // make a phone call (placeholder # for now)
+                      Communications.phonecall("1 234 5678", false)
+                  }
+                >
+                  <Text>Call</Text>
+                </Button>
+              </Body>
+            <Right><Text>+1 (234) 567-8910</Text></Right>
+            </CardItem>
             <Separator bordered>
               <Text>PAIN DESCRIPTION</Text>
             </Separator>
@@ -146,24 +160,11 @@ class SubmissionDetails extends React.Component<Props, State> {
               <Text note>+1 (709) 435 7433</Text>
             </Right>
           </CardItem>
+          <CardItem footer>
+
+          </CardItem>
         </Card>
         </Content>
-        <Footer>
-        <FooterTab>
-          <Button
-            full
-            success
-            onPress={() => {
-              // make a phone call (placeholder # for now)
-              Communications.phonecall("1 234 5678", false);
-            }}
-          >
-            <H2 style={{ color: "white", fontWeight: "normal" }}>
-              Call Susie
-            </H2>
-          </Button>
-        </FooterTab>
-      </Footer>
       </Container>
     );
   }

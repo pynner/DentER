@@ -13,7 +13,9 @@ import {
   CardItem,
   Left,
   Thumbnail,
-  Separator
+  Separator,
+  H3,
+  Right
 } from "native-base";
 
 import { Auth } from "aws-amplify";
@@ -37,23 +39,36 @@ export default class Sidebar extends React.Component<Props, State> {
           </Left>
         </CardItem>
 
-        <Button
-          full
-          info
-          onPress={() =>
-            Auth.signOut()
-              .then(data => console.log(data))
-              .catch(err => console.log(err))
-          }
-        >
-          <Text>Sign out</Text>
-        </Button>
+        <CardItem>
+        <Body>
+          <Button
+            full
+            success
+            onPress={() => {
+              this.props.navigation.navigate("MultipleChoice");
+            }}
+          >
+            <Text>New request</Text>
+          </Button>
+        </Body>
+        <Right>
+          <Button
+            full
+            onPress={() =>
+              Auth.signOut()
+                .then(data => console.log(data))
+                .catch(err => console.log(err))
+            }
+          >
+            <Text>Sign out</Text>
+          </Button>
+        </Right>
+        </CardItem>
 
         <List style={{ marginTop: 0 }}>
           <Separator bordered>
             <Text>PATIENT</Text>
           </Separator>
-
           <ListItem
             button
             onPress={() => {
@@ -104,22 +119,6 @@ export default class Sidebar extends React.Component<Props, State> {
           </ListItem>
         </List>
         <Content />
-
-        <Footer>
-          <FooterTab>
-            <Button
-              full
-              success
-              onPress={() => {
-                this.props.navigation.navigate("MultipleChoice");
-              }}
-            >
-              <H2 style={{ color: "white", fontWeight: "normal" }}>
-                Submit new request
-              </H2>
-            </Button>
-          </FooterTab>
-        </Footer>
       </Container>
     );
   }
