@@ -21,6 +21,8 @@ import {
 import { NavigationActions } from "react-navigation";
 import Communications from "react-native-communications";
 
+import { API } from "aws-amplify";
+
 import styles from "./styles";
 export interface Props {
   navigation: any;
@@ -63,8 +65,33 @@ class SubmissionDetails extends React.Component<Props, State> {
     }
   }
 
+  async getAllSubmissions(ID) {
+    const path = "/survey/update/" + ID;
+
+    const myInit = {
+      headers: {}
+    };
+
+    try {
+      const APIResponse = await API.get("surveyCRUD", path, myInit).then(
+        response => {
+          return response.data;
+        }
+      );
+      console.log("response from updating status: ");
+      console.log(APIResponse);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  checkSeen(seen, ID) {
+    if (!seen) this.getAllSubmissions(ID);
+  }
+
   render() {
     const param = this.props.navigation.state.params;
+    this.checkSeen(param.data.item.hasSeen, param.data.item.submissionId);
     return (
       <Container style={styles.container}>
         <Header>

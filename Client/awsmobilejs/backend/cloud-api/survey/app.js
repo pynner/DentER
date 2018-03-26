@@ -290,6 +290,32 @@ app.get("/survey/dentist/:submissionId", function(req, res) {
   });
 });
 
+/**************************************
+ * HTTP get method to get dentist objects *
+ ***************************************/
+
+app.get("/survey/update/:submissionId", function(req, res) {
+  const payload = {
+    TableName: tableName,
+    Key: {
+      submissionId: req.params[partitionKeyName]
+    },
+    UpdateExpression: "set hasSeen = :val",
+    ExpressionAttributeValues: {
+      ":val": true
+    },
+    ReturnValues: "UPDATED_NEW"
+  };
+
+  dynamodb.update(payload, (err, data) => {
+    if (err) {
+      res.json({ error: "Could not update item: " + err.message });
+    }
+
+    res.json({ success: "Update call succeed!", data: data });
+  });
+});
+
 app.listen(3000, function() {
   console.log("App started");
 });
