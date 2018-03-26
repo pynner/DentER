@@ -21,6 +21,8 @@ import {
 import { NavigationActions } from "react-navigation";
 import Communications from "react-native-communications";
 
+import { API } from "aws-amplify";
+
 import styles from "./styles";
 export interface Props {
   navigation: any;
@@ -33,8 +35,63 @@ const resetAction = NavigationActions.reset({
 
 export interface State {}
 class SubmissionDetails extends React.Component<Props, State> {
+  getPain(val) {
+    switch (val) {
+      case 0:
+        return "Teeth";
+      case 1:
+        return "Gums";
+      case 2:
+        return "Jaw";
+      case 3:
+        return "Head";
+      default:
+        return "Unknown";
+    }
+  }
+
+  getDuration(val) {
+    switch (val) {
+      case 0:
+        return "Today";
+      case 1:
+        return "A few days";
+      case 2:
+        return "One week";
+      case 3:
+        return "Longer than one week";
+      default:
+        return "Unknown";
+    }
+  }
+
+  async getAllSubmissions(ID) {
+    const path = "/survey/update/" + ID;
+
+    const myInit = {
+      headers: {}
+    };
+
+    try {
+      const APIResponse = await API.get("surveyCRUD", path, myInit).then(
+        response => {
+          return response.data;
+        }
+      );
+      console.log("response from updating status: ");
+      console.log(APIResponse);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  checkSeen(seen, ID) {
+    if (!seen) this.getAllSubmissions(ID);
+  }
+
   render() {
     const param = this.props.navigation.state.params;
+    this.checkSeen(param.data.item.hasSeen, param.data.item.submissionId);
     return (
       <Container style={styles.container}>
         <Header>
@@ -52,7 +109,7 @@ class SubmissionDetails extends React.Component<Props, State> {
           </Body>
 
           <Right>
-            <Button transparent onPress={() => this.props.onRefresh()}>
+            <Button transparent onPress={() => console.log(param.data.item)}>
               <Icon name="md-refresh" />
             </Button>
           </Right>
@@ -60,7 +117,7 @@ class SubmissionDetails extends React.Component<Props, State> {
         <Content padder>
           <Card>
             <CardItem header>
-              <H3>Susie Green</H3>
+              <H3>{param.data.item.name}</H3>
             </CardItem>
             <CardItem>
               <Body>
@@ -68,13 +125,13 @@ class SubmissionDetails extends React.Component<Props, State> {
                   full
                   success
                   onPress={() => // make a phone call (placeholder # for now)
-                      Communications.phonecall("1 234 5678", false)
+                      Communications.phonecall(param.data.item.phone, false)
                   }
                 >
                   <Text>Call</Text>
                 </Button>
               </Body>
-            <Right><Text>+1 (234) 567-8910</Text></Right>
+            <Right><Text>{param.data.item.phone}</Text></Right>
             </CardItem>
             <Separator bordered>
               <Text>PAIN DESCRIPTION</Text>
@@ -84,7 +141,9 @@ class SubmissionDetails extends React.Component<Props, State> {
                 <Text>Where?</Text>
               </Body>
               <Right>
-                <Text note>Gums</Text>
+                <Text note>
+                  {this.getPain(param.data.item.multipleChoiceAnswers[0])}
+                </Text>
               </Right>
             </CardItem>
             <CardItem>
@@ -92,7 +151,9 @@ class SubmissionDetails extends React.Component<Props, State> {
                 <Text>How long?</Text>
               </Body>
               <Right>
-                <Text note>A few days</Text>
+                <Text note>
+                  {this.getDuration(param.data.item.multipleChoiceAnswers[1])}
+                </Text>
               </Right>
             </CardItem>
             <Separator bordered>
@@ -103,7 +164,9 @@ class SubmissionDetails extends React.Component<Props, State> {
                 <Text>Bleeding</Text>
               </Body>
               <Right>
-                <Text note>Yes</Text>
+                <Text note>
+                  {param.data.item.multipleChoiceAnswers[1][0] ? "Yes" : "No"}
+                </Text>
               </Right>
             </CardItem>
             <CardItem>
@@ -111,7 +174,9 @@ class SubmissionDetails extends React.Component<Props, State> {
                 <Text>Hard Lumps</Text>
               </Body>
               <Right>
-                <Text note>No</Text>
+                <Text note>
+                  {param.data.item.multipleChoiceAnswers[1][1] ? "Yes" : "No"}
+                </Text>
               </Right>
             </CardItem>
             <CardItem>
@@ -119,7 +184,9 @@ class SubmissionDetails extends React.Component<Props, State> {
                 <Text>Soft Lumps</Text>
               </Body>
               <Right>
-                <Text note>No</Text>
+                <Text note>
+                  {param.data.item.multipleChoiceAnswers[1][2] ? "Yes" : "No"}
+                </Text>
               </Right>
             </CardItem>
             <Separator bordered>
@@ -165,6 +232,7 @@ class SubmissionDetails extends React.Component<Props, State> {
           </CardItem>
         </Card>
         </Content>
+
       </Container>
     );
   }

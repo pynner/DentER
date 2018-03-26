@@ -53,9 +53,6 @@ class Submissions extends React.Component<Props, State> {
         </Header>
         <Content padder>
           <Card>
-            <Separator bordered>
-              <Text>PATIENT SUBMISSIONS</Text>
-            </Separator>
             <CardItem
               button
               onPress={() => {
@@ -70,29 +67,16 @@ class Submissions extends React.Component<Props, State> {
                 <Text note>May 31, 2011</Text>
               </Right>
             </CardItem>
-            <CardItem
-              button
-              onPress={() => {
-                this.props.navigation.navigate("SubmissionDetails");
-              }}
-            >
-              <Icon active style={{ color: "lightgray" }} name="md-eye" />
-              <Body>
-                <Text>Larry David</Text>
-              </Body>
-              <Right>
-                <Text note>April 4, 2011</Text>
-              </Right>
-            </CardItem>
 
             {this.props.submissionList.map((item, i) => (
               <CardItem
+                button
                 key={i}
-                onPress={() =>
+                onPress={() => {
                   this.props.navigation.navigate("SubmissionDetails", {
-                    submission: { item }
-                  })
-                }
+                    data: { item }
+                  });
+                }}
               >
                 {item.hasSeen ? (
                   <Icon style={{ color: "lightgray" }} name="md-eye" />
@@ -101,7 +85,7 @@ class Submissions extends React.Component<Props, State> {
                 )}
 
                 <Body>
-                  <Text>{item.userId}</Text>
+                  <Text>{item.name ? item.name : "No Name"}</Text>
                 </Body>
                 <Right>
                   <Text note>

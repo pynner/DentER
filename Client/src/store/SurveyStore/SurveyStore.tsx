@@ -58,13 +58,17 @@ class SurveyStore {
     let newNote = {
       body: {
         addInfo: this.additionalInfo[0],
-        dentist: "Dr.Lameo",
+        dentist: "Dr.Tester",
         multipleChoiceAnswers: this.multipleChoiceAnswers,
         hasSeen: false,
         isComplete: false,
         submissionDate: new Date().getTime(),
         userId: currentUser,
-        submissionId: currentUser + new Date().getTime()
+        submissionId: currentUser + new Date().getTime(),
+        name: "Cool",
+        phone: "+18074725151",
+        sex: "M",
+        age: 2
       }
     };
     const path = "/survey";
