@@ -11,31 +11,31 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /calender: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/calender-20180325201859.zip
+            codeFilename: uploads/calender-20180326192435.zip
             description: 'Handler for calls to resource path : /calender/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: Z9kn1cS0aK7fN5Db8hYfNYrKMEDLI96UiZ+S0GIafgI=
+            hashcode: 6tMd4BoDQf+Kjp74Wz0IqXwh2+HoX4UXTOF6NGI6DH0=
             memorySize: '128'
-            modified: '2018-03-26T00:19:40.663+0000'
+            modified: '2018-03-26T20:59:37.229+0000'
             name: calender
             runtime: nodejs6.10
             timeout: '3'
-            version: 92fDMertQ8ojSgvfhZFkdQjOfEbGA1jh
+            version: QP73SV_U9yHHCr8ZHicN7YI75o0hvbE2
           '/calender/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/calender-20180325201859.zip
+            codeFilename: uploads/calender-20180326192435.zip
             description: 'Handler for calls to resource path : /calender/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: Z9kn1cS0aK7fN5Db8hYfNYrKMEDLI96UiZ+S0GIafgI=
+            hashcode: 6tMd4BoDQf+Kjp74Wz0IqXwh2+HoX4UXTOF6NGI6DH0=
             memorySize: '128'
-            modified: '2018-03-26T00:19:40.663+0000'
+            modified: '2018-03-26T20:59:37.229+0000'
             name: calender
             runtime: nodejs6.10
             timeout: '3'
-            version: h4PksCw.YkBnhvrJsuHAL6ATSBsPHcWF
+            version: BwWLGnGoQf0Ubx97klm3o4J9BFYte4ml
       surveyCRUD: !com.amazonaws.mobilehub.v0.API 
         attributes:
           name: surveyCRUD
@@ -43,31 +43,31 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /survey: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/survey-20180325201859.zip
+            codeFilename: uploads/survey-20180326174006.zip
             description: 'Handler for calls to resource path : /survey/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: etA9K4Re4DUbI8L4d42A4psEBzU2HHYbOZTzSSB0rMc=
+            hashcode: q4tEuTQJPbp6V0YZs3WRH7Ba+oe1RE4a8PLTMNfFYso=
             memorySize: '128'
-            modified: '2018-03-26T00:19:40.457+0000'
+            modified: '2018-03-26T20:59:38.169+0000'
             name: survey
             runtime: nodejs6.10
             timeout: '3'
-            version: xfqvFBIIMH.dlmGMbqRgoOgPLPuyEEXx
+            version: syODOm11.N8PbwVGfWutEmWCJ9F1bAQB
           '/survey/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/survey-20180325201859.zip
+            codeFilename: uploads/survey-20180326174006.zip
             description: 'Handler for calls to resource path : /survey/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: etA9K4Re4DUbI8L4d42A4psEBzU2HHYbOZTzSSB0rMc=
+            hashcode: q4tEuTQJPbp6V0YZs3WRH7Ba+oe1RE4a8PLTMNfFYso=
             memorySize: '128'
-            modified: '2018-03-26T00:19:40.457+0000'
+            modified: '2018-03-26T20:59:38.169+0000'
             name: survey
             runtime: nodejs6.10
             timeout: '3'
-            version: U1sQByivyJUeicbvD_APcrDqzJRihq8.
+            version: 524aOqze565dIIUdcCkmc1u9i0QgjBQx
   database: !com.amazonaws.mobilehub.v0.Database 
     components:
       database-nosql: !com.amazonaws.mobilehub.v0.NoSQLDatabase 
@@ -76,6 +76,8 @@ features:
             attributes:
               date: N
               dentist: S
+              endDate: N
+              stringDate: S
             hashKeyName: date
             hashKeyType: N
             rangeKeyName: ''

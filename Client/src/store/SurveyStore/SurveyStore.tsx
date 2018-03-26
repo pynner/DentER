@@ -8,11 +8,11 @@ class SurveyStore {
   @observable questions = [];
   @observable multipleChoiceAnswers = [-1, -1, [false, false, false]];
   @observable additionalInfo = [" "];
-  @observable age = "0";
+  @observable age: number;
   @observable phone = "0";
   @observable sex = "N/A";
   userName = "";
-  userPhone = "";
+  cDentist = "Dr.Bear";
 
   @action
   fetchItems(data) {
@@ -64,21 +64,42 @@ class SurveyStore {
   clearAdditional() {
     this.additionalInfo = [""];
   }
-
   @action
+  // Get user name, phone number, and dentist on call
   async getAWSdata() {
-    this.userName = await Auth.currentAuthenticatedUser()
+    console.log("Getting AWS user data");
+    await Auth.currentUserInfo()
       .then(response => {
-        return response.username;
+        this.userName = response.username;
+        this.phone = response.attributes.phone_number;
       })
       .catch(error => {
         console.log("Error getting user:" + error);
       });
+    // @TODO get dentist from DB, make sure call to get current dentist with current time
+
+    const path = "/calender/getdentist/1522102295490";
+
+    const myInit = {
+      headers: {}
+    };
+
+    try {
+      this.cDentist = await API.get("calenderCRUD", path, myInit).then(
+        response => {
+          return response.data.Items[0].dentist;
+        }
+      );
+      console.log("response from getting calender dentist: ");
+      console.log(this.cDentist);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   @action
   clearPatient() {
-    this.age = "0";
+    this.age = 0;
     this.phone = "0";
     this.sex = "N/A";
   }
@@ -96,7 +117,7 @@ class SurveyStore {
     let newNote = {
       body: {
         addInfo: this.additionalInfo[0],
-        dentist: "Dr.Tester",
+        dentist: this.cDentist,
         multipleChoiceAnswers: this.multipleChoiceAnswers,
         hasSeen: false,
         isComplete: false,
@@ -121,7 +142,7 @@ class SurveyStore {
       // Clear store
       this.multipleChoiceAnswers = [-1, -1, [false, false, false]];
       this.additionalInfo = [""];
-      this.age = "0";
+      this.age = 0;
       this.phone = "0";
       this.sex = "N/A";
     } catch (e) {

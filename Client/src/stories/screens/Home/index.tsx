@@ -38,7 +38,11 @@ class Home extends React.Component<Props, State> {
           <Body>
             <Title>DentER</Title>
           </Body>
-          <Right />
+          <Right>
+            <Button transparent onPress={() => console.log("get new patients")}>
+              <Icon name="ios-cloud-download-outline" />
+            </Button>
+          </Right>
         </Header>
         <Content padder>
           <Card>
@@ -55,7 +59,7 @@ class Home extends React.Component<Props, State> {
           </Card>
           <Card>
             <CardItem>
-              <Icon style={{color: "red"}}name="md-notifications" />
+              <Icon style={{ color: "red" }} name="md-notifications" />
               <Text>You have 17 notifications.</Text>
             </CardItem>
           </Card>

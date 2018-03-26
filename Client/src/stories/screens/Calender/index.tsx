@@ -16,7 +16,6 @@ import styles from "./styles";
 export interface Props {
   navigation: any;
   calender: any;
-  onRefresh: Function;
 }
 const resetAction = NavigationActions.reset({
   index: 0,

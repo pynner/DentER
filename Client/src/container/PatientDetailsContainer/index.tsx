@@ -36,7 +36,6 @@ export default class PatientDetailsContainerContainer extends React.Component<
   submitSurvey() {
     this.props.surveyStore.saveSurvey();
   }
-
   render() {
     const survey = this.props.surveyStore;
     const Fields = (
