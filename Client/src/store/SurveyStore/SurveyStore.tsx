@@ -7,8 +7,8 @@ class SurveyStore {
   @observable isLoading = true;
   @observable questions = [];
   @observable multipleChoiceAnswers = [-1, -1, [false, false, false]];
-  @observable additionalInfo = [" "];
-  @observable age: number;
+  @observable additionalInfo = [""];
+  @observable age = "";
   @observable phone = "0";
   @observable sex = "N/A";
   @observable name = "";
@@ -115,8 +115,7 @@ class SurveyStore {
 
   @action
   clearPatient() {
-    this.age = 0;
-    this.phone = "18073332211";
+    this.age = "";
     this.sex = "N/A";
     this.name = "";
   }
@@ -133,7 +132,9 @@ class SurveyStore {
 
     let newNote = {
       body: {
-        addInfo: this.additionalInfo[0],
+        addInfo: this.additionalInfo[0]
+          ? this.additionalInfo[0]
+          : "No added info",
         dentist: "Chiz",
         multipleChoiceAnswers: this.multipleChoiceAnswers,
         hasSeen: false,
@@ -141,10 +142,10 @@ class SurveyStore {
         submissionDate: new Date().getTime(),
         userId: currentUser,
         submissionId: currentUser + new Date().getTime(),
-        name: this.name,
+        name: this.name ? this.name : "Unknown Name",
         phone: this.phone,
         sex: this.sex,
-        age: Number(this.age)
+        age: Number(this.age) ? Number(this.age) : 99
       }
     };
     const path = "/survey";
@@ -159,8 +160,8 @@ class SurveyStore {
       // Clear store
       this.multipleChoiceAnswers = [-1, -1, [false, false, false]];
       this.additionalInfo = [""];
-      this.age = 0;
-      this.phone = "0";
+      this.age = "";
+      this.sex = "N/A";
       this.name = "";
     } catch (e) {
       console.log(e);
