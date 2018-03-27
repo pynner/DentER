@@ -4,6 +4,19 @@
 
 _Brought to you by WebHealth LakeheadU_
 
+## What is DentER
+
+DentER is a prototype application created to help connect on-call dentists with patients in need of
+dental assistance. When provided with an adequate alternative, we believe that such an application
+could vastly reduce the number of patients who visit Emergency Rooms for dental problems, unaware
+that dental services are not typically provided there.
+
+## Development Tools
+
+The DentER prototype was created using React-Native as a front-end native android/ios development tool,
+and AWS services (Mobile Hub, AWS CLI, AWS Amplify, Cognito, DynamoDB). Individually, and as a team,
+this was our first time working with React-Native for cross platform native development.
+
 ## Get Started
 
 ### 1. System Requirements
