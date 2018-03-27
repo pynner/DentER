@@ -51,6 +51,8 @@ export default class PatientDetailsContainerContainer extends React.Component<
               ref={c => (this.name = c)}
               value={survey.name}
               onChangeText={e => survey.nameOnChange(e)}
+              autoCapitalize={"words"}
+              returnKeyType={"next"}
             />
           </Item>
         </CardItem>
@@ -62,6 +64,7 @@ export default class PatientDetailsContainerContainer extends React.Component<
             <Input
               keyboardType="numeric"
               placeholder="Enter your age..."
+              maxLength={2}
               ref={c => (this.age = c)}
               value={survey.age}
               onChangeText={e => survey.ageOnChange(e)}
