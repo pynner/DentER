@@ -1,4 +1,3 @@
-/* eslint-disable */
 /*
 Copyright 2017 - 2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at
@@ -16,16 +15,16 @@ AWS.config.update({ region: process.env.REGION });
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 const mhprefix = process.env.MOBILE_HUB_DYNAMIC_PREFIX;
-let tableName = "survey";
+let tableName = "calender";
 const hasDynamicPrefix = true;
 
 const userIdPresent = false;
-const partitionKeyName = "submissionId";
-const partitionKeyType = "S";
+const partitionKeyName = "date";
+const partitionKeyType = "N";
 const sortKeyName = "";
 const sortKeyType = "";
 const hasSortKey = false;
-const path = "/survey";
+const path = "/calender";
 
 const awsmobile = {};
 
@@ -64,7 +63,7 @@ const convertUrlType = (param, type) => {
  * HTTP Get method for list objects *
  ********************************/
 
-app.get("/survey/:submissionId", function(req, res) {
+app.get("/calender/:date", function(req, res) {
   var condition = {};
   condition[partitionKeyName] = {
     ComparisonOperator: "EQ"
@@ -102,7 +101,7 @@ app.get("/survey/:submissionId", function(req, res) {
  * HTTP Get method for get single object *
  *****************************************/
 
-app.get("/survey/object/:submissionId", function(req, res) {
+app.get("/calender/object/:date", function(req, res) {
   var params = {};
   if (userIdPresent && req.apiGateway) {
     params[partitionKeyName] =
@@ -197,7 +196,7 @@ app.post(path, function(req, res) {
  * HTTP remove method to delete object *
  ***************************************/
 
-app.delete("/survey/object/:submissionId", function(req, res) {
+app.delete("/calender/object/:date", function(req, res) {
   var params = {};
   if (userIdPresent && req.apiGateway) {
     params[partitionKeyName] =
@@ -241,7 +240,7 @@ app.delete("/survey/object/:submissionId", function(req, res) {
  * HTTP get method to get all objects *
  ***************************************/
 
-app.get("/survey/allObj/:submissionId", function(req, res) {
+app.get("/calender/getall/:submissionId", function(req, res) {
   const payload = {
     TableName: tableName,
     Select: "ALL_ATTRIBUTES"
@@ -260,59 +259,30 @@ app.get("/survey/allObj/:submissionId", function(req, res) {
   });
 });
 
-/**************************************
- * HTTP get method to get dentist objects *
- ***************************************/
+/**************************************************
+ * HTTP get method to get current dentist on call *
+ **************************************************/
 
-app.get("/survey/dentist/:submissionId", function(req, res) {
+app.get("/calender/getdentist/:submissionId", function(req, res) {
   const payload = {
     TableName: tableName,
-    FilterExpression: "#dent = :name",
+    FilterExpression: "#d <= :time and #ed >= :time",
     ExpressionAttributeNames: {
-      "#dent": "dentist"
+      "#d": "date",
+      "#ed": "endDate"
     },
     ExpressionAttributeValues: {
-      ":name": req.params[partitionKeyName]
+      ":time": Number(req.params.submissionId)
     },
     Select: "ALL_ATTRIBUTES"
   };
 
   dynamodb.scan(payload, (err, data) => {
     if (err) {
-      res.json({ error: "Could not load items: " + err.message });
+      res.json({ error: "Could not get item: " + err.message });
     }
 
-    res.json({
-      data: data.Items.map(item => {
-        return item;
-      })
-    });
-  });
-});
-
-/**************************************
- * HTTP get method to get dentist objects *
- ***************************************/
-
-app.get("/survey/update/:submissionId", function(req, res) {
-  const payload = {
-    TableName: tableName,
-    Key: {
-      submissionId: req.params[partitionKeyName]
-    },
-    UpdateExpression: "set hasSeen = :val",
-    ExpressionAttributeValues: {
-      ":val": true
-    },
-    ReturnValues: "UPDATED_NEW"
-  };
-
-  dynamodb.update(payload, (err, data) => {
-    if (err) {
-      res.json({ error: "Could not update item: " + err.message });
-    }
-
-    res.json({ success: "Update call succeed!", data: data });
+    res.json({ success: "Got dentist call succeed!", data: data });
   });
 });
 

@@ -16,7 +16,6 @@ import styles from "./styles";
 export interface Props {
   navigation: any;
   calender: any;
-  onRefresh: Function;
 }
 const resetAction = NavigationActions.reset({
   index: 0,
@@ -33,19 +32,15 @@ class Calender extends React.Component<Props, State> {
               transparent
               onPress={() => this.props.navigation.dispatch(resetAction)}
             >
-              <Icon name="ios-close" />
+              <Icon name="arrow-back" />
             </Button>
           </Left>
 
           <Body style={{ flex: 3 }}>
-            <Title>On-Call Calender</Title>
+            <Title>On-Call Calendar</Title>
           </Body>
 
-          <Right>
-            <Button transparent onPress={() => console.log("Refresh calender")}>
-              <Icon name="ios-refresh" />
-            </Button>
-          </Right>
+          <Right />
         </Header>
 
         <Content padder>{this.props.calender}</Content>

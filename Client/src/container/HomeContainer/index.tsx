@@ -5,14 +5,34 @@ import Home from "../../stories/screens/Home";
 
 export interface Props {
   navigation: any;
-  mainStore: any;
+  calenderStore: any;
+  submissionsStore: any;
+  surveyStore: any;
 }
 export interface State {}
 
-@inject("mainStore")
+@inject("calenderStore")
+@inject("submissionsStore")
+@inject("surveyStore")
 @observer
 export default class HomeContainer extends React.Component<Props, State> {
+  componentWillMount() {
+    this.getNewData();
+  }
+
+  getNewData() {
+    this.props.calenderStore.getAllCalender();
+    this.props.submissionsStore.getAllSubmissions();
+    this.props.surveyStore.getAWSdata();
+  }
+
   render() {
-    return <Home navigation={this.props.navigation} />;
+    return (
+      <Home
+        navigation={this.props.navigation}
+        count={this.props.submissionsStore.unread}
+        onRefresh={() => this.getNewData()}
+      />
+    );
   }
 }

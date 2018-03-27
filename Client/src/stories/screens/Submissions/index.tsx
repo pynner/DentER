@@ -7,7 +7,11 @@ import {
   Icon,
   Left,
   Right,
-  Body
+  Body,
+  Content,
+  Card,
+  CardItem,
+  Text
 } from "native-base";
 import { NavigationActions } from "react-navigation";
 
@@ -15,6 +19,7 @@ import styles from "./styles";
 export interface Props {
   navigation: any;
   onRefresh: Function;
+  submissionList: any;
 }
 const resetAction = NavigationActions.reset({
   index: 0,
@@ -31,7 +36,7 @@ class Submissions extends React.Component<Props, State> {
               transparent
               onPress={() => this.props.navigation.dispatch(resetAction)}
             >
-              <Icon name="ios-close" />
+              <Icon name="arrow-back" />
             </Button>
           </Left>
 
@@ -40,11 +45,42 @@ class Submissions extends React.Component<Props, State> {
           </Body>
 
           <Right>
-            <Button transparent onPress={() => console.log("Refresh calender")}>
-              <Icon name="ios-refresh" />
+            <Button transparent onPress={() => this.props.onRefresh()}>
+              <Icon name="md-refresh" />
             </Button>
           </Right>
         </Header>
+        <Content padder>
+          <Card>
+            {this.props.submissionList.map((item, i) => (
+              <CardItem
+                button
+                key={i}
+                onPress={() => {
+                  this.props.navigation.navigate("SubmissionDetails", {
+                    data: { item }
+                  });
+                }}
+              >
+                {item.hasSeen ? (
+                  <Icon style={{ color: "lightgray" }} name="md-eye" />
+                ) : (
+                  <Icon style={{ color: "red" }} name="md-notifications" />
+                )}
+
+                <Body>
+                  <Text>{item.name ? item.name : "No Name"}</Text>
+                </Body>
+                <Right>
+                  <Text note>
+                    {/* Remove last bits of date from new Date() */}
+                    {new Date(item.submissionDate).toString().slice(0, -23)}
+                  </Text>
+                </Right>
+              </CardItem>
+            ))}
+          </Card>
+        </Content>
       </Container>
     );
   }

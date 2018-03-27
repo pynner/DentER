@@ -4,44 +4,68 @@ import {
   Header,
   Title,
   Content,
-  Text,
   Button,
   Icon,
   Left,
-  Right,
   Body,
-  View
+  Text,
+  View,
+  Right
 } from "native-base";
-import { NavigationActions } from "react-navigation";
 
 import styles from "./styles";
+import { NavigationActions } from "react-navigation";
+import { Alert } from "react-native";
 export interface Props {
   navigation: any;
-  surveyQuestions: any;
-  reset: Function;
+  content: any;
   submit: Function;
+  reset: Function;
 }
+
 const resetAction = NavigationActions.reset({
   index: 0,
   actions: [NavigationActions.navigate({ routeName: "Drawer" })]
 });
+
 export interface State {}
-class Additional extends React.Component<Props, State> {
+class PatientDetails extends React.Component<Props, State> {
+  confirmSubmit() {
+    // Actually submit form
+    Alert.alert(
+      "Confirm Submission",
+      "Are you sure you want to submit your dentist submission?",
+      [
+        {
+          text: "Yes",
+          onPress: () => {
+            console.log("Submitted");
+            this.props.submit();
+            this.props.navigation.dispatch(resetAction);
+          }
+        },
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        }
+      ],
+      { cancelable: false }
+    );
+  }
+
   render() {
     return (
       <Container style={styles.container}>
         <Header>
           <Left>
-            <Button
-              transparent
-              onPress={() => this.props.navigation.dispatch(resetAction)}
-            >
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
               <Icon name="arrow-back" />
             </Button>
           </Left>
 
           <Body style={{ flex: 3 }}>
-            <Title>Additional Information</Title>
+            <Title>Personal Information</Title>
           </Body>
 
           <Right>
@@ -51,11 +75,7 @@ class Additional extends React.Component<Props, State> {
           </Right>
         </Header>
 
-        <Content padder>
-          {this.props.surveyQuestions}
-          {/* View to add padding so can scroll to bottom item */}
-          <View style={{ marginBottom: 100 }} />
-        </Content>
+        <Content padder>{this.props.content}</Content>
 
         {/* Survey Navigation */}
         <View style={styles.navigation}>
@@ -68,15 +88,12 @@ class Additional extends React.Component<Props, State> {
               Previous
             </Text>
           </Button>
-          <Button
-            transparent
-            onPress={() => this.props.navigation.navigate("PatientDetails")}
-          >
+          <Button transparent onPress={() => this.confirmSubmit()}>
             <Text style={{ color: "white", paddingRight: 0, fontSize: 20 }}>
-              Next
+              Submit
             </Text>
             <Icon
-              name="arrow-forward"
+              name="md-checkmark"
               style={{ color: "white", marginLeft: 10, fontSize: 45 }}
             />
           </Button>
@@ -86,4 +103,4 @@ class Additional extends React.Component<Props, State> {
   }
 }
 
-export default Additional;
+export default PatientDetails;
