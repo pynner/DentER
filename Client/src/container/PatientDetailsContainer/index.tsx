@@ -28,6 +28,7 @@ export default class PatientDetailsContainerContainer extends React.Component<
   State
 > {
   age: any;
+  name: any;
   phoneNum: any;
   resetForm() {
     this.props.surveyStore.clearPatient();
@@ -40,6 +41,19 @@ export default class PatientDetailsContainerContainer extends React.Component<
     const survey = this.props.surveyStore;
     const Fields = (
       <Card>
+        <CardItem header>
+          <Text>What is your name?</Text>
+        </CardItem>
+        <CardItem>
+          <Item regular>
+            <Input
+              placeholder="Enter your name..."
+              ref={c => (this.name = c)}
+              value={survey.name}
+              onChangeText={e => survey.nameOnChange(e)}
+            />
+          </Item>
+        </CardItem>
         <CardItem header>
           <Text>How old are you?</Text>
         </CardItem>

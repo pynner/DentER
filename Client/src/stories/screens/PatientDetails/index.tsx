@@ -61,7 +61,7 @@ class PatientDetails extends React.Component<Props, State> {
           <Left>
             <Button
               transparent
-              onPress={() => this.props.navigation.dispatch(resetAction)}
+              onPress={() => this.props.navigation.goBack()}
             >
               <Icon name="arrow-back" />
             </Button>

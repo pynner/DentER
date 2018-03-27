@@ -49,6 +49,11 @@ class SurveyStore {
   }
 
   @action
+  nameOnChange(val) {
+    this.name = val;
+  }
+
+  @action
   phoneOnChange(val) {
     this.phone = val;
   }
