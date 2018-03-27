@@ -49,6 +49,11 @@ class CalenderStore {
             color: "#98fb98"
           };
         });
+        this.onCall[new Date().toISOString().substring(0, 10)] = {
+          startingDay: true,
+          endingDay: true,
+          color: "#ADD8E6"
+        };
         this.isLoading = false;
       } catch (e) {
         console.log(e);

@@ -48,6 +48,16 @@ class Home extends React.Component<Props, State> {
           </Right>
         </Header>
         <Content padder>
+          {this.props.count > 0 ? (
+            <Card>
+              <CardItem>
+                <Icon style={{ color: "red" }} name="md-notifications" />
+                <Text>You have {this.props.count} notifications.</Text>
+              </CardItem>
+            </Card>
+          ) : (
+            <Card />
+          )}
           <Card>
             <CardItem header>
               <Body>
@@ -60,17 +70,7 @@ class Home extends React.Component<Props, State> {
               </Body>
             </CardItem>
           </Card>
-          <Card>
-            <CardItem>
-              <Icon
-                style={
-                  this.props.count > 0 ? { color: "red" } : { color: "grey" }
-                }
-                name="md-notifications"
-              />
-              <Text>You have {this.props.count} notifications.</Text>
-            </CardItem>
-          </Card>
+
           <Body>
             <Text> </Text>
             <Text>Swipe right to get started.</Text>
