@@ -15,7 +15,7 @@ class SubmissionsStore {
       .catch(error => {
         console.log("Error getting user:" + error);
       });
-    const path = "/survey/dentist/Dr." + currentUser;
+    const path = "/survey/dentist/" + currentUser;
 
     const myInit = {
       headers: {}
@@ -27,8 +27,7 @@ class SubmissionsStore {
           return response.data;
         }
       );
-      console.log("response from getting surveys: ");
-      console.log(this.submissionsArray);
+      console.log("Received survey data");
     } catch (e) {
       console.log(e);
     }

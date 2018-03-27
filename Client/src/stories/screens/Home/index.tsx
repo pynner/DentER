@@ -1,4 +1,5 @@
 import * as React from "react";
+import { observer, inject } from "mobx-react/native";
 import { Image } from "react-native";
 import {
   Container,
@@ -19,6 +20,8 @@ import {
 import styles from "./styles";
 export interface Props {
   navigation: any;
+  count: number;
+  onRefresh: Function;
 }
 export interface State {}
 class Home extends React.Component<Props, State> {
@@ -39,7 +42,7 @@ class Home extends React.Component<Props, State> {
             <Title>DentER</Title>
           </Body>
           <Right>
-            <Button transparent onPress={() => console.log("get new patients")}>
+            <Button transparent onPress={() => this.props.onRefresh()}>
               <Icon name="ios-cloud-download-outline" />
             </Button>
           </Right>
@@ -59,8 +62,13 @@ class Home extends React.Component<Props, State> {
           </Card>
           <Card>
             <CardItem>
-              <Icon style={{ color: "red" }} name="md-notifications" />
-              <Text>You have 17 notifications.</Text>
+              <Icon
+                style={
+                  this.props.count > 0 ? { color: "red" } : { color: "grey" }
+                }
+                name="md-notifications"
+              />
+              <Text>You have {this.props.count} notifications.</Text>
             </CardItem>
           </Card>
           <Body>

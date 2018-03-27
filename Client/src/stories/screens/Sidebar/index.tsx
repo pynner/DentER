@@ -18,6 +18,8 @@ import { Auth } from "aws-amplify";
 
 export interface Props {
   navigation: any;
+  name: any;
+  isDentist: any;
 }
 export interface State {}
 
@@ -29,8 +31,8 @@ export default class Sidebar extends React.Component<Props, State> {
           <Left>
             <Thumbnail source={require("../../../../assets/profile.jpg")} />
             <Body>
-              <Text>Mitchell Pynn</Text>
-              <Text note>Patient</Text>
+              <Text>{this.props.name}</Text>
+              <Text note>{this.props.isDentist ? "Dentist" : "Patient"}</Text>
             </Body>
           </Left>
         </CardItem>

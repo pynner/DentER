@@ -26,8 +26,7 @@ class CalenderStore {
             return response.data;
           }
         );
-        console.log("response from getting surveys: ");
-        console.log(this.calendarArray);
+        console.log("Received calendar data");
 
         await Auth.currentUserInfo()
           .then(response => {

@@ -27,7 +27,7 @@ export default class MultipleChoiceContainer extends React.Component<
 
   componentWillMount() {
     this.props.surveyStore.fetchItems(data);
-    this.props.surveyStore.getAWSdata();
+    // this.props.surveyStore.getAWSdata();
   }
 
   render() {

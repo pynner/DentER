@@ -44,9 +44,6 @@ export default class CalenderContainer extends React.Component<Props, State> {
       0: "Peng"
     };
   }
-  componentWillMount() {
-    this.props.calenderStore.getAllCalender();
-  }
 
   showDentist(day) {
     const dentistArray = this.props.calenderStore.calendarArray.find(
