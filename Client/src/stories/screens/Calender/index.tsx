@@ -45,7 +45,7 @@ class Calender extends React.Component<Props, State> {
           </Left>
 
           <Body style={{ flex: 3 }}>
-            <Title>On-Call Calender</Title>
+            <Title>On-Call Calendar</Title>
           </Body>
 
           <Right>
