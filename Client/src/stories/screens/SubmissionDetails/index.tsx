@@ -19,6 +19,7 @@ import { NavigationActions } from "react-navigation";
 import Communications from "react-native-communications";
 
 import { API } from "aws-amplify";
+import { Alert } from "react-native";
 
 import styles from "./styles";
 export interface Props {
@@ -61,7 +62,7 @@ class SubmissionDetails extends React.Component<Props, State> {
     }
   }
 
-  async getAllSubmissions(ID) {
+  async updateSeen(ID) {
     const path = "/survey/update/" + ID;
 
     const myInit = {
@@ -69,20 +70,53 @@ class SubmissionDetails extends React.Component<Props, State> {
     };
 
     try {
-      const APIResponse = await API.get("surveyCRUD", path, myInit).then(
-        response => {
-          return response.data;
-        }
-      );
-      console.log("response from updating status: ");
-      console.log(APIResponse);
+      await API.get("surveyCRUD", path, myInit).then(response => {
+        return response.data;
+      });
     } catch (e) {
       console.log(e);
     }
   }
 
+  async updateComplete(ID) {
+    const path = "/survey/updatestatus/" + ID;
+
+    const myInit = {
+      headers: {}
+    };
+
+    try {
+      await API.get("surveyCRUD", path, myInit).then(response => {
+        return response.data;
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  showConfirm(ID) {
+    Alert.alert(
+      "Are you sure you want to archive this submission?",
+      "This cannot be undone",
+      [
+        {
+          text: "Cancel",
+          style: "cancel"
+        },
+        {
+          text: "Yes",
+          onPress: () => {
+            this.updateComplete(ID);
+            this.props.navigation.dispatch(resetAction);
+          }
+        }
+      ],
+      { cancelable: false }
+    );
+  }
+
   checkSeen(seen, ID) {
-    if (!seen) this.getAllSubmissions(ID);
+    if (!seen) this.updateSeen(ID);
   }
 
   render() {
@@ -104,7 +138,14 @@ class SubmissionDetails extends React.Component<Props, State> {
             <Title>Submission Details</Title>
           </Body>
 
-          <Right />
+          <Right>
+            <Button
+              transparent
+              onPress={() => this.showConfirm(param.data.item.submissionId)}
+            >
+              <Icon name="md-archive" />
+            </Button>
+          </Right>
         </Header>
         <Content padder>
           <Card>

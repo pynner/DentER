@@ -11,7 +11,7 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /calender: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/calender-20180326224832.zip
+            codeFilename: uploads/calender-20180327024740.zip
             description: 'Handler for calls to resource path : /calender/{proxy+}'
             enableCORS: true
             environment: {}
@@ -24,7 +24,7 @@ features:
             timeout: '3'
             version: tVzEqNGtD05txR8wWYcPAeMD5LcKncg9
           '/calender/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/calender-20180326224832.zip
+            codeFilename: uploads/calender-20180327024740.zip
             description: 'Handler for calls to resource path : /calender/{proxy+}'
             enableCORS: true
             environment: {}
@@ -43,7 +43,7 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /survey: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/survey-20180326224832.zip
+            codeFilename: uploads/survey-20180327024740.zip
             description: 'Handler for calls to resource path : /survey/{proxy+}'
             enableCORS: true
             environment: {}
@@ -56,7 +56,7 @@ features:
             timeout: '3'
             version: X3JSZvOyLoNVasnAG.rUdZil92W06ZCz
           '/survey/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/survey-20180326224832.zip
+            codeFilename: uploads/survey-20180327024740.zip
             description: 'Handler for calls to resource path : /survey/{proxy+}'
             enableCORS: true
             environment: {}

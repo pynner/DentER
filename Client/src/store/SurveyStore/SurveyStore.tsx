@@ -135,7 +135,7 @@ class SurveyStore {
         addInfo: this.additionalInfo[0]
           ? this.additionalInfo[0]
           : "No added info",
-        dentist: "Chiz",
+        dentist: this.cDentist,
         multipleChoiceAnswers: this.multipleChoiceAnswers,
         hasSeen: false,
         isComplete: false,

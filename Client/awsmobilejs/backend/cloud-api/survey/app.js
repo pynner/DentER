@@ -267,12 +267,14 @@ app.get("/survey/allObj/:submissionId", function(req, res) {
 app.get("/survey/dentist/:submissionId", function(req, res) {
   const payload = {
     TableName: tableName,
-    FilterExpression: "#dent = :name",
+    FilterExpression: "#dent = :name and #comp = :val",
     ExpressionAttributeNames: {
-      "#dent": "dentist"
+      "#dent": "dentist",
+      "#comp": "isComplete"
     },
     ExpressionAttributeValues: {
-      ":name": req.params[partitionKeyName]
+      ":name": req.params[partitionKeyName],
+      ":val": false
     },
     Select: "ALL_ATTRIBUTES"
   };
@@ -301,6 +303,32 @@ app.get("/survey/update/:submissionId", function(req, res) {
       submissionId: req.params[partitionKeyName]
     },
     UpdateExpression: "set hasSeen = :val",
+    ExpressionAttributeValues: {
+      ":val": true
+    },
+    ReturnValues: "UPDATED_NEW"
+  };
+
+  dynamodb.update(payload, (err, data) => {
+    if (err) {
+      res.json({ error: "Could not update item: " + err.message });
+    }
+
+    res.json({ success: "Update call succeed!", data: data });
+  });
+});
+
+/********************************************
+ * HTTP get method to update submission seen*
+ *******************************************/
+
+app.get("/survey/updatestatus/:submissionId", function(req, res) {
+  const payload = {
+    TableName: tableName,
+    Key: {
+      submissionId: req.params[partitionKeyName]
+    },
+    UpdateExpression: "set isComplete = :val",
     ExpressionAttributeValues: {
       ":val": true
     },

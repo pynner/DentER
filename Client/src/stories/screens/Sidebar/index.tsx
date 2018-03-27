@@ -87,15 +87,6 @@ export default class Sidebar extends React.Component<Props, State> {
             >
               <Text>Home</Text>
             </ListItem>
-
-            <ListItem
-              button
-              onPress={() => {
-                this.props.navigation.navigate("Submissions");
-              }}
-            >
-              <Text>Past Submissions</Text>
-            </ListItem>
           </List>
         ) : (
           <List style={{ marginTop: 0 }}>
