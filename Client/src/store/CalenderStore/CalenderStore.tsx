@@ -1,11 +1,13 @@
 import { observable, action } from "mobx";
 
-import { API } from "aws-amplify";
+import { API, Auth } from "aws-amplify";
 
 class CalenderStore {
   @observable hasErrored = false;
   @observable isLoading = true;
-  @observable calendarArray = [];
+  calendarArray = [];
+  onCall = {};
+  dentist = "";
 
   @action
   async getAllCalender() {
@@ -26,6 +28,28 @@ class CalenderStore {
         );
         console.log("response from getting surveys: ");
         console.log(this.calendarArray);
+
+        await Auth.currentUserInfo()
+          .then(response => {
+            this.dentist = response.username;
+          })
+          .catch(error => {
+            console.log("Error getting user:" + error);
+          });
+
+        // Get on call days
+        const onCallObject = this.calendarArray.filter(
+          o => o.dentist === this.dentist
+        );
+
+        onCallObject.forEach(item => {
+          const date = item.stringDate;
+          this.onCall[date] = {
+            startingDay: true,
+            endingDay: true,
+            color: "#98fb98"
+          };
+        });
         this.isLoading = false;
       } catch (e) {
         console.log(e);

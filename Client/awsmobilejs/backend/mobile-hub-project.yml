@@ -11,7 +11,7 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /calender: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/calender-20180326192435.zip
+            codeFilename: uploads/calender-20180326213103.zip
             description: 'Handler for calls to resource path : /calender/{proxy+}'
             enableCORS: true
             environment: {}
@@ -24,7 +24,7 @@ features:
             timeout: '3'
             version: QP73SV_U9yHHCr8ZHicN7YI75o0hvbE2
           '/calender/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/calender-20180326192435.zip
+            codeFilename: uploads/calender-20180326213103.zip
             description: 'Handler for calls to resource path : /calender/{proxy+}'
             enableCORS: true
             environment: {}

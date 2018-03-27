@@ -54,7 +54,7 @@ export default class CalenderContainer extends React.Component<Props, State> {
     );
     Alert.alert(
       dentistArray != undefined
-        ? "Dr." + dentistArray.dentist
+        ? "Dr." + dentistArray.dentist + " is On-Call"
         : "Dr.Bear" + " is On-Call",
       this.months[day.month] + " " + day.day + " " + day.year,
       [
@@ -104,13 +104,7 @@ export default class CalenderContainer extends React.Component<Props, State> {
         onDayPress={day => {
           this.showDentist(day);
         }}
-        markedDates={{
-          "2018-02-01": {
-            startingDay: true,
-            endingDay: true,
-            color: "#98fb98"
-          }
-        }}
+        markedDates={store.onCall}
         markingType={"period"}
       />
     );
