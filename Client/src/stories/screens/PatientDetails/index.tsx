@@ -16,6 +16,9 @@ import {
 import styles from "./styles";
 import { NavigationActions } from "react-navigation";
 import { Alert } from "react-native";
+
+import Sound from "react-native-sound";
+
 export interface Props {
   navigation: any;
   content: any;
@@ -30,6 +33,25 @@ const resetAction = NavigationActions.reset({
 
 export interface State {}
 class PatientDetails extends React.Component<Props, State> {
+  whoosh: any;
+
+  constructor(props) {
+    super(props);
+    this.whoosh = new Sound("send.mp3", Sound.MAIN_BUNDLE, error => {
+      if (error) {
+        console.log("failed to load the sound", error);
+        return;
+      }
+      // loaded successfully
+      console.log(
+        "duration in seconds: " +
+          this.whoosh.getDuration() +
+          "number of channels: " +
+          this.whoosh.getNumberOfChannels()
+      );
+    });
+  }
+
   confirmSubmit() {
     // Actually submit form
     Alert.alert(
@@ -40,6 +62,17 @@ class PatientDetails extends React.Component<Props, State> {
           text: "Yes",
           onPress: () => {
             console.log("Submitted");
+            // Play the sound with an onEnd callback
+            this.whoosh.play(success => {
+              if (success) {
+                console.log("successfully finished playing");
+              } else {
+                console.log("playback failed due to audio decoding errors");
+                // reset the player to its uninitialized state (android only)
+                // this is the only option to recover after an error occured and use the player again
+                this.whoosh.reset();
+              }
+            });
             this.props.submit();
             this.props.navigation.dispatch(resetAction);
           }
