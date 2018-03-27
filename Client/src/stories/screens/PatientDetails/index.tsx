@@ -25,7 +25,7 @@ export interface Props {
 
 const resetAction = NavigationActions.reset({
   index: 0,
-  actions: [NavigationActions.navigate({ routeName: "Additional" })]
+  actions: [NavigationActions.navigate({ routeName: "Drawer" })]
 });
 
 export interface State {}
@@ -59,10 +59,7 @@ class PatientDetails extends React.Component<Props, State> {
       <Container style={styles.container}>
         <Header>
           <Left>
-            <Button
-              transparent
-              onPress={() => this.props.navigation.goBack()}
-            >
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
               <Icon name="arrow-back" />
             </Button>
           </Left>

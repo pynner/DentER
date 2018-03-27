@@ -91,10 +91,10 @@ export default class Sidebar extends React.Component<Props, State> {
             <ListItem
               button
               onPress={() => {
-                this.props.navigation.navigate("Calender");
+                this.props.navigation.navigate("Submissions");
               }}
             >
-              <Text>Calendar</Text>
+              <Text>Past Submissions</Text>
             </ListItem>
           </List>
         ) : (

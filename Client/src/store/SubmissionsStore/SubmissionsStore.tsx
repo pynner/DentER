@@ -1,9 +1,20 @@
-import { observable, action } from "mobx";
+import { observable, action, computed } from "mobx";
 
 import { API, Auth } from "aws-amplify";
 
 class SubmissionsStore {
   @observable submissionsArray = [];
+
+  @computed
+  get unread() {
+    let count = 0;
+    this.submissionsArray.forEach(item => {
+      if (!item.hasSeen) {
+        count++;
+      }
+    });
+    return count;
+  }
 
   @action
   async getAllSubmissions() {

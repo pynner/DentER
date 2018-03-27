@@ -11,6 +11,7 @@ class SurveyStore {
   @observable age: number;
   @observable phone = "0";
   @observable sex = "N/A";
+  @observable name = "";
   @observable userName = "";
   @observable isDentist = false;
   cDentist = "Dr.Bear";
@@ -115,8 +116,9 @@ class SurveyStore {
   @action
   clearPatient() {
     this.age = 0;
-    this.phone = "0";
+    this.phone = "18073332211";
     this.sex = "N/A";
+    this.name = "";
   }
   // Submit survey to AWS
   @action
@@ -139,7 +141,7 @@ class SurveyStore {
         submissionDate: new Date().getTime(),
         userId: currentUser,
         submissionId: currentUser + new Date().getTime(),
-        name: "Cool",
+        name: this.name,
         phone: this.phone,
         sex: this.sex,
         age: Number(this.age)
@@ -159,7 +161,7 @@ class SurveyStore {
       this.additionalInfo = [""];
       this.age = 0;
       this.phone = "0";
-      this.sex = "N/A";
+      this.name = "";
     } catch (e) {
       console.log(e);
     }

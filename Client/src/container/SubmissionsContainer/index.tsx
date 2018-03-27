@@ -18,6 +18,10 @@ export default class SubmissionsContainer extends React.Component<
     this.props.submissionsStore.getAllSubmissions();
   }
 
+  componentWillMount() {
+    this.props.submissionsStore.getAllSubmissions();
+  }
+
   render() {
     const submissionList = this.props.submissionsStore.submissionsArray.toJS();
     return (

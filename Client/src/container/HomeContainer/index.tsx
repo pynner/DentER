@@ -30,7 +30,7 @@ export default class HomeContainer extends React.Component<Props, State> {
     return (
       <Home
         navigation={this.props.navigation}
-        count={this.props.submissionsStore.submissionsArray.length}
+        count={this.props.submissionsStore.unread}
         onRefresh={() => this.getNewData()}
       />
     );
