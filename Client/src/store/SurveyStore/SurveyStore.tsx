@@ -94,7 +94,7 @@ class SurveyStore {
       });
     // @TODO get dentist from DB, make sure call to get current dentist with current time
 
-    const path = "/calender/getdentist/1522102295490";
+    const path = "/calender/getdentist/" + new Date().getTime();
 
     const myInit = {
       headers: {}
