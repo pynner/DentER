@@ -11,6 +11,7 @@ class SurveyStore {
   @observable age: number;
   @observable phone = "0";
   @observable sex = "N/A";
+  @observable name = "";
   userName = "";
   cDentist = "Dr.Bear";
 
@@ -43,6 +44,11 @@ class SurveyStore {
   @action
   ageOnChange(val) {
     this.age = val;
+  }
+
+  @action
+  nameOnChange(val) {
+    this.name = val;
   }
 
   @action
