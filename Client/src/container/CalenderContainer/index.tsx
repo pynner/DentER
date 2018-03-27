@@ -44,9 +44,6 @@ export default class CalenderContainer extends React.Component<Props, State> {
       0: "Peng"
     };
   }
-  componentWillMount() {
-    this.props.calenderStore.getAllCalender();
-  }
 
   showDentist(day) {
     const dentistArray = this.props.calenderStore.calendarArray.find(
@@ -54,7 +51,7 @@ export default class CalenderContainer extends React.Component<Props, State> {
     );
     Alert.alert(
       dentistArray != undefined
-        ? "Dr." + dentistArray.dentist + " is On-Call"
+        ? "Dr. " + dentistArray.dentist + " is On-Call"
         : "Dr.Bear" + " is On-Call",
       this.months[day.month] + " " + day.day + " " + day.year,
       [

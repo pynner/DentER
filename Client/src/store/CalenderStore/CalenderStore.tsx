@@ -26,8 +26,7 @@ class CalenderStore {
             return response.data;
           }
         );
-        console.log("response from getting surveys: ");
-        console.log(this.calendarArray);
+        console.log("Received calendar data");
 
         await Auth.currentUserInfo()
           .then(response => {
@@ -50,6 +49,11 @@ class CalenderStore {
             color: "#98fb98"
           };
         });
+        this.onCall[new Date().toISOString().substring(0, 10)] = {
+          startingDay: true,
+          endingDay: true,
+          color: "#ADD8E6"
+        };
         this.isLoading = false;
       } catch (e) {
         console.log(e);

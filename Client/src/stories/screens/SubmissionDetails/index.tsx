@@ -23,7 +23,6 @@ import { API } from "aws-amplify";
 import styles from "./styles";
 export interface Props {
   navigation: any;
-  onRefresh: Function;
 }
 const resetAction = NavigationActions.reset({
   index: 0,
@@ -105,11 +104,7 @@ class SubmissionDetails extends React.Component<Props, State> {
             <Title>Submission Details</Title>
           </Body>
 
-          <Right>
-            <Button transparent onPress={() => console.log(param.data.item)}>
-              <Icon name="md-refresh" />
-            </Button>
-          </Right>
+          <Right />
         </Header>
         <Content padder>
           <Card>

@@ -16,16 +16,7 @@ export default class SubmissionDetailsContainer extends React.Component<
 > {
   addInfo: any;
 
-  refresh() {
-    this.props.submissionsStore.getAllSubmissions();
-  }
-
   render() {
-    return (
-      <SubmissionDetails
-        navigation={this.props.navigation}
-        onRefresh={() => this.refresh()}
-      />
-    );
+    return <SubmissionDetails navigation={this.props.navigation} />;
   }
 }

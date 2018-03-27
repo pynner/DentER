@@ -23,14 +23,6 @@ const resetAction = NavigationActions.reset({
 });
 export interface State {}
 class Calender extends React.Component<Props, State> {
-  constructor(props) {
-    super(props);
-    this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
-  }
-
-  forceUpdateHandler() {
-    this.forceUpdate();
-  }
   render() {
     return (
       <Container style={styles.container}>
@@ -48,11 +40,7 @@ class Calender extends React.Component<Props, State> {
             <Title>On-Call Calendar</Title>
           </Body>
 
-          <Right>
-            <Button transparent onPress={() => this.forceUpdateHandler()}>
-              <Icon name="md-refresh" />
-            </Button>
-          </Right>
+          <Right />
         </Header>
 
         <Content padder>{this.props.calender}</Content>

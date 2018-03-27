@@ -11,9 +11,11 @@ class SurveyStore {
   @observable age: number;
   @observable phone = "0";
   @observable sex = "N/A";
-  @observable name = "";
-  userName = "";
+  @observable userName = "";
+  @observable isDentist = false;
   cDentist = "Dr.Bear";
+
+  dentists = ["Pynn", "Robb", "Chiz", "Gibb", "Peng"];
 
   @action
   fetchItems(data) {
@@ -70,6 +72,12 @@ class SurveyStore {
   clearAdditional() {
     this.additionalInfo = [""];
   }
+
+  checkIfDentist() {
+    if (this.dentists.indexOf(this.userName) > -1) {
+      this.isDentist = true;
+    }
+  }
   @action
   // Get user name, phone number, and dentist on call
   async getAWSdata() {
@@ -78,6 +86,7 @@ class SurveyStore {
       .then(response => {
         this.userName = response.username;
         this.phone = response.attributes.phone_number;
+        this.checkIfDentist();
       })
       .catch(error => {
         console.log("Error getting user:" + error);
@@ -123,7 +132,7 @@ class SurveyStore {
     let newNote = {
       body: {
         addInfo: this.additionalInfo[0],
-        dentist: this.cDentist,
+        dentist: "Chiz",
         multipleChoiceAnswers: this.multipleChoiceAnswers,
         hasSeen: false,
         isComplete: false,

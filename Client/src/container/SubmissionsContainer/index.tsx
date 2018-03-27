@@ -14,10 +14,6 @@ export default class SubmissionsContainer extends React.Component<
   Props,
   State
 > {
-  componentWillMount() {
-    this.props.submissionsStore.getAllSubmissions();
-  }
-
   refresh() {
     this.props.submissionsStore.getAllSubmissions();
   }

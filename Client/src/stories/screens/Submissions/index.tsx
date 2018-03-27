@@ -52,21 +52,6 @@ class Submissions extends React.Component<Props, State> {
         </Header>
         <Content padder>
           <Card>
-            <CardItem
-              button
-              onPress={() => {
-                this.props.navigation.navigate("SubmissionDetails");
-              }}
-            >
-              <Icon style={{ color: "red" }} name="md-notifications" />
-              <Body>
-                <Text>Liam Kent</Text>
-              </Body>
-              <Right>
-                <Text note>May 31, 2011</Text>
-              </Right>
-            </CardItem>
-
             {this.props.submissionList.map((item, i) => (
               <CardItem
                 button
