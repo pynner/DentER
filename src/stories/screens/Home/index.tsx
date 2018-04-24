@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Image, ActivityIndicator } from "react-native";
+import { Image } from "react-native";
 import {
   Container,
   Header,
@@ -49,14 +49,20 @@ class Home extends React.Component<Props, State> {
           </Right>
         </Header>
         <Content padder>
-          {this.props.isLoading && (
-            <ActivityIndicator size="small" color="#0000ff" />
-          )}
+          {this.props.isLoading && <Spinner color="#0000ff" />}
           {this.props.count > 0 ? (
             <Card>
-              <CardItem>
+              <CardItem
+                button
+                onPress={() => {
+                  this.props.navigation.navigate("Submissions");
+                }}
+              >
                 <Icon style={{ color: "red" }} name="md-notifications" />
                 <Text>You have {this.props.count} notifications.</Text>
+                <Right>
+                  <Icon name="arrow-forward" />
+                </Right>
               </CardItem>
             </Card>
           ) : (
