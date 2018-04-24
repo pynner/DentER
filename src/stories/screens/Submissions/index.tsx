@@ -28,6 +28,8 @@ const resetAction = NavigationActions.reset({
 export interface State {}
 class Submissions extends React.Component<Props, State> {
   render() {
+    const { params } = this.props.navigation.state;
+    const isDentist: boolean = params ? params.data : true;
     return (
       <Container style={styles.container}>
         <Header>
@@ -41,7 +43,9 @@ class Submissions extends React.Component<Props, State> {
           </Left>
 
           <Body style={{ flex: 3 }}>
-            <Title>Survey Submissions</Title>
+            <Title>
+              {isDentist ? "Survey Submissions" : "Submission History"}
+            </Title>
           </Body>
 
           <Right>

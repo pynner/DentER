@@ -87,6 +87,17 @@ export default class Sidebar extends React.Component<Props, State> {
             >
               <Text>Home</Text>
             </ListItem>
+
+            <ListItem
+              button
+              onPress={() => {
+                this.props.navigation.navigate("Submissions", {
+                  data: false
+                });
+              }}
+            >
+              <Text>Submission History</Text>
+            </ListItem>
           </List>
         ) : (
           <List style={{ marginTop: 0 }}>
@@ -115,7 +126,9 @@ export default class Sidebar extends React.Component<Props, State> {
             <ListItem
               button
               onPress={() => {
-                this.props.navigation.navigate("Submissions");
+                this.props.navigation.navigate("Submissions", {
+                  data: true
+                });
               }}
             >
               <Text>Submissions</Text>

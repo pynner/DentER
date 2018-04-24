@@ -147,7 +147,7 @@ class SubmissionDetails extends React.Component<Props, State> {
             </Button>
           </Right>
         </Header>
-        <Content padder>
+        <Content>
           <Card>
             <CardItem header>
               <H3>{param.data.item.name}</H3>

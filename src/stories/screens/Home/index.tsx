@@ -55,7 +55,9 @@ class Home extends React.Component<Props, State> {
               <CardItem
                 button
                 onPress={() => {
-                  this.props.navigation.navigate("Submissions");
+                  this.props.navigation.navigate("Submissions", {
+                    data: true
+                  });
                 }}
               >
                 <Icon style={{ color: "red" }} name="md-notifications" />
@@ -66,7 +68,7 @@ class Home extends React.Component<Props, State> {
               </CardItem>
             </Card>
           ) : (
-            <Card />
+            <Text> </Text>
           )}
           <Card>
             <CardItem header>

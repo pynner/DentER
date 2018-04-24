@@ -348,6 +348,36 @@ app.listen(3000, function() {
   console.log("App started");
 });
 
+/**************************************
+ * HTTP get method to get PATIENT objects *
+ ***************************************/
+
+app.get("/survey/patient/:submissionId", function(req, res) {
+  const payload = {
+    TableName: tableName,
+    FilterExpression: "#dent = :name",
+    ExpressionAttributeNames: {
+      "#dent": "userId"
+    },
+    ExpressionAttributeValues: {
+      ":name": req.params.submissionId
+    },
+    Select: "ALL_ATTRIBUTES"
+  };
+
+  dynamodb.scan(payload, (err, data) => {
+    if (err) {
+      res.json({ error: "Could not load items: " + err.message });
+    }
+
+    res.json({
+      data: data.Items.map(item => {
+        return item;
+      })
+    });
+  });
+});
+
 // Export the app object. When executing the application local this does nothing. However,
 // to port it to AWS Lambda we will create a wrapper around that will load the app from
 // this file

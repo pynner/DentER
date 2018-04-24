@@ -2,6 +2,8 @@ import { observable, action } from "mobx";
 
 import { API, Auth } from "aws-amplify";
 
+import dentists from "../../boot/dentists";
+
 class SurveyStore {
   @observable hasErrored = false;
   @observable isLoading = true;
@@ -16,7 +18,7 @@ class SurveyStore {
   @observable isDentist = false;
   cDentist = "Dr.Bear";
 
-  dentists = ["Pynn", "Robb", "Chiz", "Gibb", "Peng"];
+  dentists = dentists;
 
   @action
   fetchItems(data) {
@@ -94,23 +96,29 @@ class SurveyStore {
       });
     // @TODO get dentist from DB, make sure call to get current dentist with current time
 
-    const path = "/calender/getdentist/" + new Date().getTime();
+    if (this.isDentist) {
+      const path = "/calender/getdentist/" + new Date().getTime();
 
-    const myInit = {
-      headers: {}
-    };
+      const myInit = {
+        headers: {}
+      };
 
-    try {
-      this.cDentist = await API.get("calenderCRUD", path, myInit).then(
-        response => {
-          return response.data.Items[0].dentist;
-        }
-      );
-      console.log("response from getting calender dentist: ");
-      console.log(this.cDentist);
-    } catch (e) {
-      console.log(e);
+      try {
+        this.cDentist = await API.get("calenderCRUD", path, myInit).then(
+          response => {
+            return response.data.count > 0
+              ? response.data.Items[0].dentist
+              : "Dr.Bear";
+          }
+        );
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      console.log("getUserSubmissions");
     }
+
+    console.log("Done getting AWS Data");
   }
 
   @action

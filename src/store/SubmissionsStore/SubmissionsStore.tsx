@@ -2,9 +2,21 @@ import { observable, action, computed } from "mobx";
 
 import { API, Auth } from "aws-amplify";
 
+import dentists from "../../boot/dentists";
+
 class SubmissionsStore {
   @observable submissionsArray = [];
   @observable isLoading = true;
+
+  currentUser = "";
+  dentists = dentists;
+  isDentist = false;
+
+  checkIfDentist() {
+    if (this.dentists.indexOf(this.currentUser) > -1) {
+      this.isDentist = true;
+    }
+  }
 
   @computed
   get unread() {
@@ -19,15 +31,18 @@ class SubmissionsStore {
 
   @action
   async getAllSubmissions() {
-    const currentUser = await Auth.currentUserInfo()
+    await Auth.currentUserInfo()
       .then(response => {
         // return response.attributes.phone_number;
-        return response.username;
+        this.currentUser = response.username;
+        this.checkIfDentist();
       })
       .catch(error => {
         console.log("Error getting user:" + error);
       });
-    const path = "/survey/dentist/" + currentUser;
+
+    const typeOfSubmissions = this.isDentist ? "dentist" : "patient";
+    const path = "/survey/" + typeOfSubmissions + "/" + this.currentUser;
 
     const myInit = {
       headers: {}
