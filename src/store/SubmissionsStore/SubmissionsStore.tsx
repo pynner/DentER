@@ -4,6 +4,7 @@ import { API, Auth } from "aws-amplify";
 
 class SubmissionsStore {
   @observable submissionsArray = [];
+  @observable isLoading = true;
 
   @computed
   get unread() {
@@ -42,6 +43,7 @@ class SubmissionsStore {
     } catch (e) {
       console.log(e);
     }
+    this.isLoading = false;
   }
 }
 

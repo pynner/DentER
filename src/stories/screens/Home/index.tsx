@@ -1,6 +1,5 @@
 import * as React from "react";
-import { observer, inject } from "mobx-react/native";
-import { Image } from "react-native";
+import { Image, ActivityIndicator } from "react-native";
 import {
   Container,
   Header,
@@ -14,7 +13,8 @@ import {
   H3,
   Card,
   CardItem,
-  Text
+  Text,
+  Spinner
 } from "native-base";
 
 import styles from "./styles";
@@ -22,6 +22,7 @@ export interface Props {
   navigation: any;
   count: number;
   onRefresh: Function;
+  isLoading: boolean;
 }
 export interface State {}
 class Home extends React.Component<Props, State> {
@@ -48,6 +49,9 @@ class Home extends React.Component<Props, State> {
           </Right>
         </Header>
         <Content padder>
+          {this.props.isLoading && (
+            <ActivityIndicator size="small" color="#0000ff" />
+          )}
           {this.props.count > 0 ? (
             <Card>
               <CardItem>
